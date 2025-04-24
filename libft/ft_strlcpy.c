@@ -12,10 +12,10 @@
 
 #include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	unsigned int	i;
-	unsigned int	end;
+	size_t		end;
 	unsigned int	length;
 
 	end = size - 1;
@@ -43,6 +43,6 @@ int	main()
 	
 	printf("Before: %s\n", arr);
 	
-	printf("After: %d\n", ft_strlcpy(dest, arr, size));
+	printf("After: %zu\n", ft_strlcpy(dest, 0, size));
 	return 0;
 }
