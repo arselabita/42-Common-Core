@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	unsigned int	i;
@@ -32,17 +30,4 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	}
 	dest[i] = '\0';
 	return (length);
-}
-
-int	main()
-{
-	char arr[] = "Arsela Bita";
-	char dest[50];
-	unsigned int size = 50; 
-	
-	
-	printf("Before: %s\n", arr);
-	
-	printf("After: %zu\n", ft_strlcpy(dest, 0, size));
-	return 0;
 }
