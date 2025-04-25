@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
+
 size_t	ft_strlen(const char *str)
 {
 	int	i;
@@ -24,39 +25,33 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	srclen;
 	size_t	dstlen;
-
+	size_t	length;
+	size_t j;
+	size_t i;
+	
 	dstlen = ft_strlen(dst);
 	srclen = ft_strlen(src);
-	
-	if (cpy_dst == size)
-		return (size + cpy_src);
-	if (dstlen < size - dstlen)
-		return ();
 
-
-/////////////////////////////////////////////
-	if (dst[j] < size)
+	i = 0;
+	length = dstlen + srclen;	
+	while (src[i] && dstlen + i < size - 1)
 	{
-		while (src[i])
-		{
-			dst[j + i] = src[i];
-			i++;
-		}
+		dst[dstlen + i] = src[i];
+		i++;
 	}
-	length = i + j;
-	if (dst[j] == size)
-		return (length);
-
-	dst[i + j] = '\0';
+	dst[dstlen + i] = '\0';
 	return(length);
 }
-//////////////////////////////////////////
+
 int	main()
 {
-	char	src[10] = "arsela";
-	char	dest[10] = "bita";
-	size_t	size = 8;
-
-	printf("After: %zu\n", ft_strlcat(dest, src, size));
+	char	src[] = "arsecdekkkkkkkkkkkf";
+	char	dest[12] = "bita";
+	
+	size_t a = ft_strlcat(dest, src, sizeof(dest));
+	printf("%s\n", dest);
+	printf("%zu\n", a);
+	
+	return 0;
 }
 

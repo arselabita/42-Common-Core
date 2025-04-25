@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 11:34:09 by abita             #+#    #+#             */
-/*   Updated: 2025/04/24 11:34:11 by abita            ###   ########.fr       */
+/*   Created: 2025/04/25 11:35:52 by abita             #+#    #+#             */
+/*   Updated: 2025/04/25 11:35:56 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+#include <stdio.h>
+
+int	ft_tolower(int c)
 {
-	unsigned int	i;
-	size_t		end;
-	unsigned int	length;
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
+}
 
-	end = size - 1;
-	length = 0;
-	while (src[length])
-		length++;
-	if (size == 0)
-		return (length);
+int	main()
+{
+	int 	i;
+	char	letter;
+	char	letters[20] = "ARSE';LA";
+
+	ft_tolower('A');
+	
 	i = 0;
-	while (src[i] && i < end)
+	while (letters[i])
 	{
-		dest[i] = src[i];
+		printf("%c", ft_tolower(letters[i]));
 		i++;
 	}
-	dest[i] = '\0';
-	return (length);
+	return (0);
 }
