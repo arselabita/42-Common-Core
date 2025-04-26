@@ -28,32 +28,3 @@ char *ft_strrchr(const char *s, int c)
 		return (char *)&s[i];
 	return (char *)temp;
 }
-
-#include <stdio.h>
-
-int	main()
-{
-	int	index;
-	const char	*value;
-	char	s1[20] = "ArselaBiiita";
-
-	printf("String: %s\n", s1);
-	value = ft_strrchr(s1, 'i');
-
-	if (value != NULL)
-	{
-		printf("The char found: %s\n", value);
-		index = (int)(value - s1);
-		printf("%d\n", index);
-	}
-	else
-		printf("The char is not found.");
-
-	// Test case for the null character '\0'
-	value = ft_strrchr(s1, '\0');
-	if (value != NULL)
-		printf("The null character found at index: %d\n", (int)(value - s1));
-
-	return (0);
-}
-
