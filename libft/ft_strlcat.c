@@ -26,32 +26,35 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	srclen;
 	size_t	dstlen;
 	size_t	length;
-	size_t j;
-	size_t i;
-	
+	size_t	j;
+	size_t	i;
+
 	dstlen = ft_strlen(dst);
 	srclen = ft_strlen(src);
 
+	length = dstlen + srclen;
+	if (dstlen == size)
+		return (length);
 	i = 0;
-	length = dstlen + srclen;	
-	while (src[i] && dstlen + i < size - 1)
+	while (src[i] && (dstlen + i < size - 1))
 	{
 		dst[dstlen + i] = src[i];
 		i++;
 	}
 	dst[dstlen + i] = '\0';
-	return(length);
+	return (length);
 }
 
 int	main()
 {
 	char	src[] = "arsecdekkkkkkkkkkkf";
 	char	dest[12] = "bita";
-	
+
 	size_t a = ft_strlcat(dest, src, sizeof(dest));
+
 	printf("%s\n", dest);
 	printf("%zu\n", a);
-	
-	return 0;
+
+	return (0);
 }
 
