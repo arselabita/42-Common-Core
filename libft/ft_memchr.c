@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 void	*ft_memset(void *str, int c, size_t len)
 {
 	size_t i;
@@ -45,26 +43,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (0);
 }
-
-int	main()
-{
-	int	index;
-	char	str[10000];
-	char	*value;
-	char	*str_memset;
-	printf("The input: %s\n", str);
-	str_memset = ft_memset(str, 0, sizeof(str));
-	value = ft_memchr(str, 3, sizeof(str));
-	
-	if (value != NULL)
-	{
-		printf("The char found: %s\n", value);
-		index = (int)(value - str);
-		printf("%d\n", index);
-	}
-	else
-		printf("The char is not found.");
-
-	return (0);
-}
-
