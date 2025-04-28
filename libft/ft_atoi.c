@@ -16,33 +16,23 @@ int	ft_atoi(const char *nptr)
 	int	minus;
 	int	i;
 
-	minus = 0;
+	minus = 1;
 	num = 0;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
-	while (str[i] == '+' || str[i] == '-')
+	while (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if (str[i] == '-')
-			minus++;
+		if (nptr[i] == '-')
+			minus = -1;
 		i++;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
+	while (nptr[i] >= 48 && nptr[i] <= 57)
 	{
 		num *= 10;
-		num += str[i] - 48;
+		num += nptr[i] - 48;
 		i++;
 	}
-	if (!(minus % 2))
-		return (num);
-	return (-num);
-}
 
-int	main()
-{
-	char str[30] = " ---++2147483648";
-	printf("%d\n", ft_atoi(str));
-	return (0);
-	
-	return (0);
+	return (num * minus);
 }
