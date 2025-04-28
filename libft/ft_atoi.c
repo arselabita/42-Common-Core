@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
+
 int	ft_atoi(const char *nptr)
 {
-	int	num;
+	long	num;
 	int	minus;
 	int	i;
 
