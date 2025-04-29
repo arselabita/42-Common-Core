@@ -7,7 +7,7 @@ char	*ft_strdup(const char *s1)
 	int	i;
 	char	*s2;
 
-	s2 = (char *)malloc(sizeof(s1) + 1);
+	s2 = (char *)malloc((sizeof(s1) + 1) * sizeof(char));
 	if  (s2 == NULL)
 		return (NULL);
 	i = 0;
