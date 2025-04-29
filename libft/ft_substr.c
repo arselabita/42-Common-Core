@@ -49,7 +49,7 @@ size_t	ft_strlen(const char *str)
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	size_t	l;
+	size_t	j;
 	size_t	length_of_s;
 	char	*sub;
 
@@ -64,16 +64,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if ((start + len) > length_of_s)
 		return (NULL);
 	i = 0;
-	l = 0;
+	j = 0;
 	while (s[i])
 	{
-		if (i >= start && l < len)
+		if (i >= start && j < len)
 		{
-			sub[l] = s[i];
-			l++;
+			sub[j] = s[i];
+			j++;
 		}
 		i++;
 	}
+	sub[j] = '\0';
 	return (sub);
 }
 
