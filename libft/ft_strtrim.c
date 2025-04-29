@@ -23,30 +23,44 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
-	int	j;
+	char	ch = (char)c;
+
+	i = 0;
+	if(ch == '\0')
+		return (char *)&s[i];
+	while (s[i])
+	{
+		if(s[i] == ch) return (char *)&s[i];
+		i++;
+	}
+	return (0);
+}
+
+char *ft_strtrim(char const *s1, char const *set)
+{
 	char	*str;
+	int	start;
+	int	end;
+	int	length;
+	int	i;
 	
-	str = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
+	start = 0;
+	while (ft_strchr(set, s1[start]))
+		start++;
+	end = ft_strlen(s1) - 1;
+	while (end >= start && ft_strchr(set, s1[end]))
+		end--;
+	length = end - start + 1;
+	str = (char *)malloc((length + 1) * sizeof(char));
 	if (str == NULL) return (NULL);
 
 	i = 0;
-	while (s1[i])
-	{
-		j = 0;
-		while (set[j])
-		{
-			if (s1[i] == set[j])
-			{
-				
-			}	
-			j++;
-		}
-		i++;
-	}
-	str[k] = '\0';
+	while (start <= end)
+		str[i++] = s1[start++];
+	str[i] = '\0';
 	return (str);
 }
 
