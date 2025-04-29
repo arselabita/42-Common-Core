@@ -10,8 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdio.h>
+//#include "libft.h"
 
+
+/*
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
@@ -30,19 +34,55 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		i++;
 	}
 	return (0);
+}*/
+
+size_t	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	
+	size_t	i;
+	size_t	l;
+	size_t	length_of_s;
+	char	*sub;
+
+	if (s == NULL)
+		return (NULL);
+	sub = (char *)malloc((len + 1) * sizeof(char));
+	if (sub == NULL)
+		return (NULL);
+	length_of_s = ft_strlen(s);
+	if (start > length_of_s)
+		return (NULL);
+	if ((start + len) > length_of_s)
+		return (NULL);
+	i = 0;
+	l = 0;
+	while (s[i])
+	{
+		if (i >= start && l < len)
+		{
+			sub[l] = s[i];
+			l++;
+		}
+		i++;
+	}
+	return (sub);
 }
 
 int	main()
 {
-	char	str[] = "The substring starts at index ’start’..";
+	char	str[] = "The substring starts at index ’start’.";
 	char	*substr;
 	
-	substr = ft_substr(str, 5, sizeof(str));
+	substr = ft_substr(str, 5, 9);
 	if (substr != NULL)
 	{
 		printf("The string: %s\n", str);
