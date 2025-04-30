@@ -14,6 +14,27 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+void *ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+	size_t	i;
+	unsigned char	*temp;
+		
+	if(count == 0 || size == 0)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	temp = (unsigned char *) ptr;
+	while (i < (count * size))
+	{
+		temp[i] = 0;
+		i++;
+	}
+	return (ptr);
+}
+
 void	ft_rev(char *tab, int size)
 {
 	int	i;
@@ -62,7 +83,8 @@ char	*ft_itoa(int n)
 	i = 0;
 	minus = 0;
 	nb = (long int) n;
-	converted = (char *)malloc((ft_numlen(n) + 1) * sizeof(char));
+
+	converted = (char *)ft_calloc((ft_numlen(n) + 1), sizeof(char));
 	if (!converted)
 		return (NULL);
 	if (nb < 0)
@@ -82,9 +104,7 @@ char	*ft_itoa(int n)
 		converted[i] = '-';
 		i++;
 	}
-	converted[i] = '\0';
 	ft_rev(converted, i);
-
 	return(converted);
 }
 
@@ -93,7 +113,7 @@ int	main()
 	int	num;
 	char	*value;
 	
-	num = -474963742;
+	num = -2147483648;
 	value = ft_itoa(num);
 	if (value != NULL)
 	{
@@ -102,7 +122,10 @@ int	main()
 		free(value);
 	}
 	else
+	{
 		printf("Memory allocation failed.\n");
+		free(value);
+	}
 	return (0);
 }
 
