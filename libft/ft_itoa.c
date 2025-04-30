@@ -25,10 +25,8 @@ int	ft_numlen(int n)
 	i = 0;
 	while (n != 0)
 	{
-		if (n < 0)
-			n = -n;
 		i++;
-		return (ft_numlen(n/10));
+		n /= 10;
 	}
 	return (i);
 }
@@ -38,22 +36,22 @@ char	*ft_itoa(int n)
 	int		i;
 	long int	nb;
 	char		*converted;
-
+	
+	i = 0;
+	nb = (long int) n;
 	converted = (char *)malloc((ft_numlen(n) + 1) * sizeof(char));
 	if (converted == NULL)
 		return (NULL);
-	if (n == 0)
-		converted[0] = '0';
-		converted[1] = '\0';
-	nb = n;
 	if (nb < 0)
-		nb = -nb;
-	i = 0;
-	while(nb != 0)
 	{
-		if (nb >= 10)
-			nb /= 10;
+		nb = -nb;
+		converted[0] = '-';
+		i++;
+	}
+	while (nb != 0)
+	{
 		converted[i] = (nb % 10) + '0';
+		nb /= 10;
 		i++;
 	}
 	converted[i] = '\0';
@@ -64,7 +62,7 @@ int	main()
 {
 	int	num;
 	char	*value;
-
+	
 	num = 42;
 	value = ft_itoa(num);
 	if (value != NULL)
