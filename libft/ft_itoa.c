@@ -14,6 +14,24 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+void	ft_rev(int *tab, int size)
+{
+	int	i;
+	int	end;
+	int	temp;
+
+	end = size - 1;
+	i = 0;
+	while (i < end)
+	{
+		temp = tab[i];
+		tab[i] = tab[end];
+		tab[end] = temp;
+		end--;
+		i++;
+	}
+}
+
 int	ft_numlen(int n)
 {
 	int	i;
@@ -55,6 +73,7 @@ char	*ft_itoa(int n)
 		i++;
 	}
 	converted[i] = '\0';
+	ft_rev(converted, i);
 	return(converted);
 }
 
