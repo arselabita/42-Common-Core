@@ -10,20 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *str, int c, size_t len)
-{
-	size_t i;
-	unsigned char *ptr;
-	
-	i = 0;
-	ptr = (unsigned char *)str;
-	while (i < len)
-	{
-		ptr[i] = (unsigned char)c;
-		i++;
-	}
-	return (str);
-}
+#include <stdio.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
@@ -38,8 +25,29 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (str[i] == ch)
-			return (void*)&str[i];
+			return &str[i];
 		i++;
 	}
 	return (0);
 }
+
+int	main()
+{
+	int	index;
+	char	str[10000] = "abita";
+	char	*value;
+	printf("The input: %s\n", str);
+	value = ft_memchr(str, 't', sizeof(str));
+	
+	if (value != NULL)
+	{
+		printf("The char found: %s\n", value);
+		index = (int)(value - str);
+		printf("the index: %d\n", index);
+	}
+	else
+		printf("The char is not found.");
+
+	return (0);
+}
+
