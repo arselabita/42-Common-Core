@@ -18,6 +18,10 @@ int	ft_numlen(int n)
 {
 	int	i;
 
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		n = -n;
 	i = 0;
 	while (n != 0)
 	{
