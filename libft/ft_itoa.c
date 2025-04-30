@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	ft_rev(int *tab, int size)
+void	ft_rev(char *tab, int size)
 {
 	int	i;
 	int	end;
@@ -27,8 +27,8 @@ void	ft_rev(int *tab, int size)
 		temp = tab[i];
 		tab[i] = tab[end];
 		tab[end] = temp;
-		end--;
 		i++;
+		end--;
 	}
 }
 
@@ -36,11 +36,14 @@ int	ft_numlen(int n)
 {
 	int	i;
 
+	i = 0;
 	if (n == 0)
 		return (1);
 	if (n < 0)
+	{
 		n = -n;
-	i = 0;
+		i++;
+	}	
 	while (n != 0)
 	{
 		i++;
@@ -52,18 +55,20 @@ int	ft_numlen(int n)
 char	*ft_itoa(int n)
 {
 	int		i;
+	int		minus;
 	long int	nb;
 	char		*converted;
 	
 	i = 0;
+	minus = 0;
 	nb = (long int) n;
 	converted = (char *)malloc((ft_numlen(n) + 1) * sizeof(char));
-	if (converted == NULL)
+	if (!converted)
 		return (NULL);
 	if (nb < 0)
 	{
+		minus = '-';
 		nb = -nb;
-		converted[0] = '-';
 		i++;
 	}
 	while (nb != 0)
@@ -72,8 +77,14 @@ char	*ft_itoa(int n)
 		nb /= 10;
 		i++;
 	}
+	if (minus)
+	{
+		converted[i] = '-';
+		i++;
+	}
 	converted[i] = '\0';
 	ft_rev(converted, i);
+
 	return(converted);
 }
 
@@ -82,7 +93,7 @@ int	main()
 	int	num;
 	char	*value;
 	
-	num = 42;
+	num = -474963742;
 	value = ft_itoa(num);
 	if (value != NULL)
 	{
