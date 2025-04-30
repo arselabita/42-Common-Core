@@ -21,8 +21,10 @@ int	ft_numlen(int n)
 	i = 0;
 	while (n != 0)
 	{
-		return (ft_numlen(n/10));
+		if (n < 0)
+			n = -n;
 		i++;
+		return (ft_numlen(n/10));
 	}
 	return (i);
 }
@@ -37,12 +39,13 @@ char	*ft_itoa(int n)
 	if (converted == NULL)
 		return (NULL);
 	if (n == 0)
-		nb = '\0';
+		converted[0] = '0';
+		converted[1] = '\0';
 	nb = n;
 	if (nb < 0)
 		nb = -nb;
 	i = 0;
-	while(nb >= 0 && nb <= 9)
+	while(nb != 0)
 	{
 		if (nb >= 10)
 			nb /= 10;
