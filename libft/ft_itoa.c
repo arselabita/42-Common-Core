@@ -1,24 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/30 13:03:57 by abita             #+#    #+#             */
+/*   Updated: 2025/04/30 13:04:08 by abita            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 
-int	ft_numlen(int *number)
+int	ft_numlen(int n)
 {
 	int	i;
-	int	minus;
 
 	i = 0;
-	minus = 1;
-	while (number[i] == '+' || number[i] == '-')
+	if (n > 0)
 	{
-		if (number[i] == '-')
-			minus = -1;
-		i++;
+		i += 1;
+		return (ft_numlen(n/10));
 	}
-	while (number[i])
-		i++;
-	return (i);
+	else
+		return (i);
 }
 
 void	ft_putnbr(int nb)
@@ -40,14 +47,27 @@ void	ft_putnbr(int nb)
 
 char	*ft_itoa(int n)
 {
+	char		*converted;
+	char		print;
 	int		i;
-	unsigned char	*converted;
+	long int	nb;
+	
 
-	converted = (unsigned char *)malloc((ft_numlen(n) + 1) * sizeof(unsigned char));
+	converted = (char *)malloc((ft_numlen(n) + 1) * sizeof(char));
 	if (converted == NULL)
 		return (NULL);
-	if (num == 0)
-		return ('0\0');
+	if (n == 0)
+		converted[i] = '\0';
+	nb = n;
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	print = (n % 10) + '0';
+	write(1, &print, 1);
 	i = 0;
 	while(converted[i] >= 48 && converted[i] <= 57)
 	{
@@ -74,3 +94,4 @@ int	main()
 		printf("Memory allocation failed.\n");
 	return (0);
 }
+
