@@ -12,13 +12,26 @@
 
 #include "libft.h"
 
+
 void	ft_putchar_fd(char c, int fd)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 }
-
+/*
+#include <fcntl.h>
+#include <stdio.h>
 int	main()
 {
-	ft_putchar_fd();
+	char	ch;
+	int	fd;
+
+	ch = 'a';
+	fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
+	if (fd == -1)
+		return (1);
+	printf("fd: %d\n", fd);
+	ft_putchar_fd(ch, fd);
+	
+	close (fd);
 	return (0);
-}
+}*/
