@@ -62,7 +62,7 @@ char *ft_strtrim(char const *s1, char const *set)
 	str[i] = '\0';
 	return (str);
 }
-/*
+
 int	main()
 {
 	char	str[] = "ter array must end with a NULL pointer";
@@ -81,4 +81,4 @@ int	main()
 	else
 		printf("Memory allocation failed.\n");
 	return (0);
-}*/
+}
