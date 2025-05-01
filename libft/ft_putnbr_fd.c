@@ -11,13 +11,36 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <fcntl.h>
+#include <stdio.h>
 
 void ft_putnbr_fd(int n, int fd)
 {
-	
+	char	print;
+	long int	nb;
+
+	nb = (long int) n;
+	if (nb < 0)
+	{
+		write (fd, "-", 1);
+		nb = -nb;
+	}
+	if (nb >= 10)
+		ft_putnbr_fd(nb / 10, fd);
+	print = (nb % 10) + '0';
+	write(fd, &print, 1);
 }
 
 int	main()
 {
+	int	fd;
+
+	fd = open("num.txt", O_WRONLY | O_CREAT, 0644);
+	if (fd == -1)
+		return (1);
+	printf("fd: %d\n", fd);
+	ft_putnbr_fd(-2147483647, fd);
+	
+	close (fd);
 	return (0);
 }
