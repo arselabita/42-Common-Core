@@ -11,10 +11,19 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <fcntl.h>
+#include <stdio.h>
 void	ft_putendl_fd(char *s, int fd)
 {
-	
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
 }
 
 int	main()
@@ -22,11 +31,11 @@ int	main()
 	char	str[] = "arsela";
 	int	fd;
 
-	fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
+	fd = open("test1.txt", O_WRONLY | O_CREAT, 0644);
 	if (fd == -1)
 		return (1);
 	printf("fd: %d\n", fd);
-	ft_putchar_fd(ch, fd);
+	ft_putendl_fd(str, fd);
 
 	close(fd);
 	return (0);
