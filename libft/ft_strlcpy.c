@@ -9,6 +9,7 @@
 /*   Updated: 2025/04/24 11:34:11 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)

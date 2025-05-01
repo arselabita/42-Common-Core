@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "libft.h"
 
 void *ft_calloc(size_t count, size_t size)
 {
@@ -107,7 +105,7 @@ char	*ft_itoa(int n)
 	ft_rev(converted, i);
 	return(converted);
 }
-
+/*
 int	main()
 {
 	int	num;
@@ -127,5 +125,4 @@ int	main()
 		free(value);
 	}
 	return (0);
-}
-
+}*/

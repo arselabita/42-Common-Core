@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 13:49:54 by abita             #+#    #+#             */
-/*   Updated: 2025/04/26 13:49:58 by abita            ###   ########.fr       */
+/*   Created: 2025/05/01 15:57:30 by abita             #+#    #+#             */
+/*   Updated: 2025/05/01 15:57:31 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
+	
+}
 
-	i = 0;
-	while (i < n && s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	if  (i < n)
-		return (s1[i] - s2[i]);
+int	main()
+{
 	return (0);
 }

@@ -9,7 +9,8 @@
 /*   Updated: 2025/04/24 21:44:11 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {

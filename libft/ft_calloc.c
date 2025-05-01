@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 void *ft_calloc(size_t count, size_t size)
 {
@@ -33,7 +32,7 @@ void *ft_calloc(size_t count, size_t size)
 	}
 	return (ptr);
 }
-
+/*
 int main()
 {
 	int	n;
@@ -54,4 +53,4 @@ int main()
 	}
 	free(ptr);
 	return (0);
-}
+}*/

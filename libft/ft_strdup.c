@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/01 15:19:16 by abita             #+#    #+#             */
+/*   Updated: 2025/05/01 15:19:18 by abita            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
@@ -18,7 +28,7 @@ char	*ft_strdup(const char *s1)
 	}
 	return (s2);
 }
-
+/*
 int	main()
 {
 	const char	*str = "hellowww";
@@ -34,4 +44,4 @@ int	main()
 	else
 		printf("Memoryy allocation failed.\n");
 	return (0);
-}
+}*/

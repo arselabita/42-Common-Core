@@ -10,31 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-//#include "libft.h"
-
-
-/*
-char	*ft_strnstr(const char *big, const char *little, size_t len)
-{
-	size_t	i;
-	size_t	j;
-
-	if (little[0] == '\0')
-		return (char*)(big);
-	i = 0;
-	while (big[i] && i < len)
-	{
-		j = 0;
-		while (little[j] && big[i + j] == little[j] && (i + j) < len)
-			j++;
-		if (!little[j])
-			return (char*)(&big[i]);
-		i++;
-	}
-	return (0);
-}*/
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -77,7 +53,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[j] = '\0';
 	return (sub);
 }
-
+/*
 int	main()
 {
 	char	str[] = "The substring starts at index ’start’.";
@@ -93,4 +69,4 @@ int	main()
 	else
 		printf("Failed to allocate memory.\n");
 	return (0);
-}
+}*/

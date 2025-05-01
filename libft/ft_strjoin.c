@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -55,7 +54,7 @@ char *ft_strjoin(char const *s1, char const *s2)
 	new_str[j] = '\0';
 	return (new_str);
 }
-
+/*
 int	main()
 {
 	char	str1[] = "arsela";
@@ -74,4 +73,4 @@ int	main()
 	else
 		printf("The memory allocation failed.");
 	return (0);
-}
+}*/
