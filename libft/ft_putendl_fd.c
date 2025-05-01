@@ -19,5 +19,15 @@ void	ft_putendl_fd(char *s, int fd)
 
 int	main()
 {
+	char	str[] = "arsela";
+	int	fd;
+
+	fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
+	if (fd == -1)
+		return (1);
+	printf("fd: %d\n", fd);
+	ft_putchar_fd(ch, fd);
+
+	close(fd);
 	return (0);
 }

@@ -12,12 +12,32 @@
 
 #include "libft.h"
 
+
 void	ft_putstr_fd(char *s, int fd)
 {
-	
-}
+	int	i;
 
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+}
+/*
+#include <fcntl.h>
+#include <stdio.h>
 int	main()
 {
+	char	ch[] = "arsela";
+	int	fd;
+
+	fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
+	if (fd == -1)
+		return (1);
+	printf("fd: %d\n", fd);
+	ft_putstr_fd(ch, fd);
+
+	close (fd);
 	return (0);
-}
+}*/
