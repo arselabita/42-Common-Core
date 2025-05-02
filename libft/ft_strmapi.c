@@ -24,7 +24,6 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-
 char	funct(unsigned int i, char ch)
 {
 	if ((i % 2 == 0) && (ch >= 'a' && ch <= 'z'))
@@ -37,7 +36,7 @@ char	funct(unsigned int i, char ch)
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	unsigned int	i;
 	char	*new_str;
 
 	new_str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
