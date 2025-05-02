@@ -15,7 +15,7 @@
 
 void	funct(unsigned int i, char *ch)
 {
-	if ((i % 2 == 0) && (*ch >= 'a' && *ch <= 'z'))
+	if ((i % 2 == 0) && (ch[i] >= 'a' && *ch <= 'z'))
 		*ch -= 32;
 }
 
@@ -36,7 +36,7 @@ int	main()
 	char	str[] = "Returns NULL if the allocation fails.";
 
 	printf("The input: %s\n", str);
-	ft_strmapi(str, funct);
+	ft_striteri(str, funct);
 	printf("The output: %s\n", str);
 	return (0);
 }
