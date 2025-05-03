@@ -62,20 +62,15 @@ int	save_the_word(char **split, char const *s, int start, int i, int j)
 	split[j] = word_copy(s, start, i);
 	if (!split[j])
 	{
-		free_the_split(split, j);
+		while (j > 0)
+		{
+			j--;
+			free(split[j]);
+		}
+		free(split);
 		return (0);
 	}
 	return (1);
-}
-
-void	free_the_split(char **split, int j)
-{
-	while (j > 0)
-	{
-		j--;
-		free(split[j]);
-	}
-	free(split);
 }
 
 char	**ft_split(char const *s, char c)
@@ -108,11 +103,10 @@ char	**ft_split(char const *s, char c)
 	return (split);
 }
 
-
 int	main()
 {
 	char	str[] = "Returns NULL if the allocation fails.";
-	char	ch = 'a';
+	char	ch = 't';
 	char	**split;
 	int	i;
 
@@ -137,4 +131,4 @@ int	main()
 		free(split);
 	}
 	return (0);
-}                  
+}
