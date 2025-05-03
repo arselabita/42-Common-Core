@@ -63,7 +63,6 @@ char	**ft_split(char const *s, char c)
 	int	j;
 	int	start;
 	int	num_words;
-	char	*word;
 	char	**split;
 
 	num_words = word_count(s, c);
@@ -72,6 +71,7 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
+	start = 0;
 	while(s[i])
 	{
 		while (s[i] && s[i] == c)
@@ -81,13 +81,21 @@ char	**ft_split(char const *s, char c)
 			i++;
 		if (start < i)
 		{
-			split[j] = word_copy(s, c, i);
-			
+			split[j] = word_copy(s, start, i);
+			if (split[j] == NULL)
+			{
+				while (j > 0)
+				{
+					j--;
+					free(split[j]);
+				}
+				free(split);
+				return (NULL);
+			}
+			j++;
 		}
 	}
-	
-
-	split[j] = '\0';
+	split[j] = NULL;
 	return (split);
 }
 
