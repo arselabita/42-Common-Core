@@ -67,18 +67,26 @@ void	free_the_split(char **split, int j)
 	free(split);
 }
 
+int	save_the_word(char **split, char const *s, int start, int i, int j)
+{
+	split[j] = word_copy(s, start, i);
+	if (!split[j])
+	{
+		free_the_split(split, j);
+		return (0);
+	}
+	return (1);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int	i;
 	int	j;
 	int	start;
-	int	num_words;
 	char	**split;
 
-	num_words = word_count(s, c);
-	split = (char **)malloc((num_words + 1) * sizeof(char *));
-	if (split == NULL) return (NULL);
-
+	if (!(split = (char **)malloc((word_count(s, c) + 1) * sizeof(char *))))
+		return (NULL);
 	i = 0;
 	j = 0;
 	start = 0;
@@ -91,12 +99,8 @@ char	**ft_split(char const *s, char c)
 			i++;
 		if (start < i)
 		{
-			split[j] = word_copy(s, start, i);
-			if (split[j] == NULL)
-			{
-				free_the_split(split, j);
+			if (!save_the_word(split, s, start, i, j))
 				return (NULL);
-			}
 			j++;
 		}
 	}
