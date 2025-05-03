@@ -11,20 +11,84 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+int	word_count(char const *s, char c)
+{
+	int	i;
+	int	start;
+	int	count;
+
+	i = 0;
+	start = 0;
+	count = 0;
+	while (s[i])
+	{	
+		while (s[i] && s[i] == c)
+			i++;
+		start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		if (start < i)
+			count++;
+	}
+	return (count);
+}
+
+char	*word_copy(char const *s, int start, int end)
+{
+	int	i;
+	int	j;
+	char	*word;
+
+	word = (char *)malloc(((end - start) + 1) * sizeof(char));
+	if (word == NULL) return (NULL);
+
+	i = start;
+	j = 0;
+	while (i < end)
+	{
+		word[j] = s[i];
+		j++;
+		i++;
+	}
+	word[j] = '\0';
+	return (word);
+}
 
 char	**ft_split(char const *s, char c)
 {
 	int	i;
+	int	j;
+	int	start;
+	int	num_words;
+	char	*word;
 	char	**split;
 
-	split = (char **)malloc(ft(ft_strlen(s)) * sizeof(char *));
+	num_words = word_count(s, c);
+	split = (char **)malloc((num_words + 1) * sizeof(char *));
 	if (split == NULL) return (NULL);
 
 	i = 0;
-	while (s[i])
+	j = 0;
+	while(s[i])
 	{
-		i++;
+		while (s[i] && s[i] == c)
+			i++;
+		start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		if (start < i)
+		{
+			split[j] = word_copy(s, c, i);
+			
+		}
 	}
+	
+
+	split[0] = word;
+	split[1] = NULL;
 	return (split);
 }
 
@@ -33,15 +97,21 @@ int	main()
 	char	str[] = "Returns NULL if the allocation fails.";
 	char	ch = 'a';
 	char	**split;
+	int	i;
 
 	split = ft_split(str, ch);
 	
-	//maybe free the allocated memory properly (loop)
 	if (split != NULL)
 	{
 		printf("The input: %s\n", str);         
 		printf("The delimiter: %c\n", ch);
-		printf("The output: %s\n", split);
+		i = 0;
+		while (split[i])
+		{
+			printf("split[%d] = %s\n", i, split[i]);
+			free(split[i]);
+			i++;
+		}
 		free(split);
 	}
 	else
