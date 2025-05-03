@@ -87,8 +87,7 @@ char	**ft_split(char const *s, char c)
 	}
 	
 
-	split[0] = word;
-	split[1] = NULL;
+	split[j] = '\0';
 	return (split);
 }
 
