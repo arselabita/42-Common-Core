@@ -57,6 +57,16 @@ char	*word_copy(char const *s, int start, int end)
 	return (word);
 }
 
+void	free_the_split(char **split, int j)
+{
+	while (j > 0)
+	{
+		j--;
+		free(split[j]);
+	}
+	free(split);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int	i;
@@ -84,12 +94,7 @@ char	**ft_split(char const *s, char c)
 			split[j] = word_copy(s, start, i);
 			if (split[j] == NULL)
 			{
-				while (j > 0)
-				{
-					j--;
-					free(split[j]);
-				}
-				free(split);
+				free_the_split(split, j);
 				return (NULL);
 			}
 			j++;
@@ -98,6 +103,7 @@ char	**ft_split(char const *s, char c)
 	split[j] = NULL;
 	return (split);
 }
+
 
 int	main()
 {
