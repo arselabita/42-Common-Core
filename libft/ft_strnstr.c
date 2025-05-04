@@ -11,23 +11,40 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
 
-	if (little[0] == '\0')
-		return (char*)(big);
+	if (!little[0])
+		return ((char *)big);
 	i = 0;
 	while (big[i] && i < len)
 	{
 		j = 0;
-		while (little[j] && big[i + j] == little[j] && (i + j) < len)
+		while (little[j] && big[i + j] && big[i + j] == little[j] && \
+			(i + j) < len)
 			j++;
 		if (!little[j])
-			return (char*)(&big[i]);
+			return ((char *)&big[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
+/*
+int	main()
+{
+	const char big[] = "Your very first library.";
+	const char little[] = "library";
+	char *result;
+
+	result = ft_strnstr(big, little, 30);
+	if (result)
+		printf("Found: %s\n", result);
+	else
+		printf("Not found\n");
+
+	return (0);
+}*/
