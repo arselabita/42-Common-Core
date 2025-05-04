@@ -28,7 +28,7 @@ void	*ft_memset(void *str, int c, size_t len)
 	return (str);
 }
 /*
-int main(void)
+int main()
 {
 	char buffer[20];
 

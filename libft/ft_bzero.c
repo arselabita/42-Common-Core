@@ -11,18 +11,45 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t i;
-	unsigned char *ptr;
-	
+	size_t			i;
+	unsigned char	*ptr;
+
 	i = 0;
 	ptr = (unsigned char *)s;
-	while (i < len)
+	while (i < n)
 	{
 		ptr[i] = 0;
 		i++;
 	}
-	return (s);
 }
+/*
+int main()
+{
+	char	buffer[] = "Arsela!";
+	int	i;
+
+	printf("Before: %s\n", buffer);
+
+	i = 0;
+	while (i < 9)
+	{
+		printf("buffer[%d] = %c [%d]\n", i, buffer[i], buffer[i]);
+		i++;
+	}
+	printf("\n");
+	
+	ft_bzero(buffer, 2); // Should set the first 2 characters to '\0'
+	printf("After:\n");
+
+	i = 0;
+	while (i < 9)
+	{
+		printf("buffer[%d] = %c [%d]\n", i, buffer[i], buffer[i]);
+		i++;
+	}
+	return (0);
+}*/

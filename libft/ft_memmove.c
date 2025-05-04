@@ -11,32 +11,62 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
+
+static void	var(unsigned char **d, unsigned char **s, \
+	void *dest, const void *src)
+{
+	*d = (unsigned char *) dest;
+	*s = (unsigned char *) src;
+}
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*s;
 	unsigned char	*d;
-	size_t		i;
+	size_t			i;
 
-	d = (unsigned char *) dest;
-	s = (unsigned char *) src;
-
+	var(&d, &s, dest, src);
 	if (d == s || n == 0)
 		return (dest);
-	i = 0;
 	if (d < s)
 	{
+		i = 0;
 		while (i < n)
+		{
 			d[i] = s[i];
 			i++;
+		}
 	}
 	else
 	{
 		while (n > 0)
 		{
-			d[n] = s[i];
+			d[n - 1] = s[n - 1];
 			n--;
 		}
 	}
 	return (dest);
 }
+/*
+int main()
+{
+	char	buffer[] = "Hello, World!";
+	int	i;
+	
+	ft_memmove(buffer + 7, buffer, 6);
+	printf("Result after memmove: %s\n", buffer);
+
+	i = 0;
+	while (i < 20)
+	{
+		if (buffer[i])
+			printf("\\0");
+		else
+			printf("%c", buffer[i]);
+		i++;
+	}
+	printf("\n");
+
+	return (0);
+}*/

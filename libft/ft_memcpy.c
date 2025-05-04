@@ -11,21 +11,34 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-void *ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t i;
-	unsigned char *d;
-	unsigned char *s;
+	size_t			i;
+	unsigned char	*d;
+	unsigned char	*s;
 
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
-
 	i = 0;
 	while (i < n)
 	{
 		d[i] = s[i];
 		i++;
 	}
-	return dest;
+	return (dest);
 }
+/*
+int main()
+{
+	char src[] = "Hello, World!";
+	char dest[20];
+
+	ft_memcpy(dest, src, 13);
+	dest[13] = '\0'; // Null terminate the string to print it
+
+	printf("Copied string: %s\n", dest);
+
+	return (0);
+}*/
