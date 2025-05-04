@@ -11,10 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 int	ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (c);
+		return (1);
 	return (0);
 }
+
+/*
+int main()
+{
+    printf("%d\n", ft_isalpha('A'));
+    printf("%d\n", ft_isalpha('z'));
+    printf("%d\n", ft_isalpha('1'));
+    printf("%d\n", ft_isalpha('#'));
+    return (0);
+}*/
