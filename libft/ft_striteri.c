@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+//#include <stdio.h>
 
-void	funct(unsigned int i, char *ch)
+/*static void	funct(unsigned int i, char *ch)
 {
 	if ((i % 2 == 0) && (ch[i] >= 'a' && *ch <= 'z'))
 		*ch -= 32;
-}
+}*/
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
@@ -30,7 +30,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 		i++;
 	}
 }
-
+/*
 int	main()
 {
 	char	str[] = "Returns NULL if the allocation fails.";
@@ -39,4 +39,4 @@ int	main()
 	ft_striteri(str, funct);
 	printf("The output: %s\n", str);
 	return (0);
-}
+}*/

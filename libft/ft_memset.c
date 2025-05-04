@@ -34,7 +34,7 @@ int main()
 
 	ft_memset(buffer, 'A', 10);
 	buffer[10] = '\0';
-	printf("ft_memset result: %s\n", buffer); // Should print: AAAAAAAAAA
+	printf("ft_memset result: %s\n", buffer);
 
 	return 0;
 }*/

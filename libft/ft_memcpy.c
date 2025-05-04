@@ -36,7 +36,7 @@ int main()
 	char dest[20];
 
 	ft_memcpy(dest, src, 13);
-	dest[13] = '\0'; // Null terminate the string to print it
+	dest[13] = '\0';
 
 	printf("Copied string: %s\n", dest);
 

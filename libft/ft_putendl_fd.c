@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
-#include <stdio.h>
+//#include <stdio.h>
+
 void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;
@@ -25,7 +25,7 @@ void	ft_putendl_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
-
+/*
 int	main()
 {
 	char	str[] = "arsela";
@@ -39,4 +39,4 @@ int	main()
 
 	close(fd);
 	return (0);
-}
+}*/

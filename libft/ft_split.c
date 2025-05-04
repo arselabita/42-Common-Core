@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdlib.h>
 
-int	word_count(char const *s, char c)
+static int	word_count(char const *s, char c)
 {
 	int	i;
 	int	start;
@@ -24,7 +24,7 @@ int	word_count(char const *s, char c)
 	start = 0;
 	count = 0;
 	while (s[i])
-	{	
+	{
 		while (s[i] && s[i] == c)
 			i++;
 		start = i;
@@ -36,15 +36,15 @@ int	word_count(char const *s, char c)
 	return (count);
 }
 
-char	*word_copy(char const *s, int start, int end)
+static char	*word_copy(char const *s, int start, int end)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*word;
 
 	word = (char *)malloc(((end - start) + 1) * sizeof(char));
-	if (word == NULL) return (NULL);
-
+	if (!word)
+		return (NULL);
 	i = start;
 	j = 0;
 	while (i < end)
@@ -57,7 +57,7 @@ char	*word_copy(char const *s, int start, int end)
 	return (word);
 }
 
-int	save_the_word(char **split, char const *s, int start, int i, int j)
+static int	save_the_word(char **split, char const *s, int start, int i, int j)
 {
 	split[j] = word_copy(s, start, i);
 	if (!split[j])
@@ -75,17 +75,18 @@ int	save_the_word(char **split, char const *s, int start, int i, int j)
 
 char	**ft_split(char const *s, char c)
 {
-	int	i;
-	int	j;
-	int	start;
+	int		i;
+	int		j;
+	int		start;
 	char	**split;
 
-	if (!(split = (char **)malloc((word_count(s, c) + 1) * sizeof(char *))))
+	split = (char **)malloc((word_count(s, c) + 1) * sizeof(char *));
+	if (!split)
 		return (NULL);
 	i = 0;
 	j = 0;
 	start = 0;
-	while(s[i])
+	while (s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
@@ -102,7 +103,7 @@ char	**ft_split(char const *s, char c)
 	split[j] = NULL;
 	return (split);
 }
-
+/*
 int	main()
 {
 	char	str[] = "Returns NULL if the allocation fails.";
@@ -131,4 +132,4 @@ int	main()
 		free(split);
 	}
 	return (0);
-}
+}*/

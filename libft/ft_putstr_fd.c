@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 void	ft_putstr_fd(char *s, int fd)
 {
@@ -24,8 +25,6 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 /*
-#include <fcntl.h>
-#include <stdio.h>
 int	main()
 {
 	char	ch[] = "arsela";

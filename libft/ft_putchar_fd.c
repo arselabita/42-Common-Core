@@ -11,15 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//#include <stdio.h>
 
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
 /*
-#include <fcntl.h>
-#include <stdio.h>
 int	main()
 {
 	char	ch;

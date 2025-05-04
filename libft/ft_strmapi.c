@@ -11,20 +11,9 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
 
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	funct(unsigned int i, char ch)
+/*static char	funct(unsigned int i, char ch)
 {
 	if ((i % 2 == 0) && (ch >= 'a' && ch <= 'z'))
 		return (ch - 32);
@@ -32,16 +21,16 @@ char	funct(unsigned int i, char ch)
 		return (ch + 32);
 	else
 		return (ch);
-}
+}*/
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
-	char	*new_str;
+	char			*new_str;
 
 	new_str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
-	if(new_str == NULL) return (NULL);
-
+	if (!new_str)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
@@ -51,7 +40,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	new_str[i] = '\0';
 	return (new_str);
 }
-
+/*
 int	main()
 {
 	char	str[] = "Returns NULL if the allocation fails.";
@@ -70,4 +59,4 @@ int	main()
 		free(value);
 	}
 	return (0);
-}
+}*/
