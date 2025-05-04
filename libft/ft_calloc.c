@@ -11,46 +11,41 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-void *ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	void	*ptr;
-	size_t	i;
-	unsigned char	*temp;
-		
-	if(count == 0 || size == 0)
+	void		*ptr;
+
+	if (count && size && count > SIZE_MAX / size)
 		return (NULL);
 	ptr = malloc(count * size);
-	if (ptr == NULL)
+	if (!ptr)
 		return (NULL);
-	i = 0;
-	temp = (unsigned char *) ptr;
-	while (i < (count * size))
-	{
-		temp[i] = 0;
-		i++;
-	}
+	ft_bzero(ptr, count * size);
 	return (ptr);
 }
 /*
 int main()
 {
-	int	n;
-	int	i;
-	int	*ptr;
+    int	n;
+    int i;
+    int *ptr;
 
-	n = 5;
-	ptr = (int *)ft_calloc(n, sizeof(int));
-	printf("%p\n", ptr);
+    n = 5;
+    ptr = (int *)ft_calloc(n, sizeof(int));
+    printf("%p\n", ptr);
 
-	if (ptr != NULL)
-		printf("Memory successfully allocated!!\n");
-	i = 0;
-	while (i < n)
-	{
-		printf("%d", ptr[i]);
-		i++;
-	}
-	free(ptr);
-	return (0);
+    if (ptr != NULL)
+        printf("Memory successfully allocated!!\n");
+
+    i = 0;
+    while (i < n)
+    {
+        printf("%d ", ptr[i]);
+        i++;
+    }
+
+    free(ptr);
+    return (0);
 }*/
