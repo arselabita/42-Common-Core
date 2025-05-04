@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 void	*ft_memset(void *str, int c, size_t len)
 {
-	size_t i;
-	unsigned char *ptr;
-	
+	size_t			i;
+	unsigned char	*ptr;
+
 	i = 0;
 	ptr = (unsigned char *)str;
 	while (i < len)
@@ -26,3 +27,14 @@ void	*ft_memset(void *str, int c, size_t len)
 	}
 	return (str);
 }
+/*
+int main(void)
+{
+	char buffer[20];
+
+	ft_memset(buffer, 'A', 10);
+	buffer[10] = '\0';
+	printf("ft_memset result: %s\n", buffer); // Should print: AAAAAAAAAA
+
+	return 0;
+}*/

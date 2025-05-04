@@ -11,30 +11,40 @@
 /* ************************************************************************** */
 
 #include <limits.h>
+//#include <stdio.h>
 
 int	ft_atoi(const char *nptr)
 {
 	long	num;
-	int	minus;
-	int	i;
+	int		minus;
+	int		i;
 
 	minus = 1;
 	num = 0;
 	i = 0;
 	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
-	while (nptr[i] == '+' || nptr[i] == '-')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
 			minus = -1;
 		i++;
 	}
-	while (nptr[i] >= 48 && nptr[i] <= 57)
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		num *= 10;
 		num += nptr[i] - 48;
 		i++;
 	}
-
-	return (num * minus);
+	return ((int)(num * minus));
 }
+/*
+int	main()
+{
+	printf("%d\n", ft_atoi("   -42"));
+	printf("%d\n", ft_atoi(" +123abc"));
+	printf("%d\n", ft_atoi("  --7"));
+	printf("%d\n", ft_atoi("2147483647"));
+	printf("%d\n", ft_atoi("-2147483648"));
+	return (0);
+}*/
