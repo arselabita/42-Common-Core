@@ -11,25 +11,33 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	unsigned int	i;
-	size_t		end;
-	unsigned int	length;
+	size_t	i;
+	size_t	end;
 
-	end = size - 1;
-	length = 0;
-	while (src[length])
-		length++;
 	if (size == 0)
-		return (length);
+		return (ft_strlen(src));
 	i = 0;
+	end = size - 1;
 	while (src[i] && i < end)
 	{
 		dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';
-	return (length);
+	return (ft_strlen(src));
 }
+/*
+int	main()
+{
+	char	dest[20];
+
+	size_t result = ft_strlcpy(dest, "Hi, Arsela!", sizeof(dest));
+	printf("Copied string: %s\n", dest);
+	printf("Length of src: %zu\n", result);
+	
+	return (0);
+}*/

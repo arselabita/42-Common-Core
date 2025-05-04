@@ -11,13 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
 }
+/*
+int main()
+{
+    const char *str = "Hi, Im Arsela!";
+    printf("Length of \"%s\": %zu\n", str, ft_strlen(str));
+    return 0;
+}*/
