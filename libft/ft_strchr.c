@@ -11,19 +11,35 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-	char	ch = (char)c;
+	char	ch;
+	int		i;
 
 	i = 0;
-	if(ch == '\0')
-		return (char *)&s[i];
+	ch = (char)c;
 	while (s[i])
 	{
-		if(s[i] == ch) return (char *)&s[i];
+		if (s[i] == ch)
+			return ((char *)&s[i]);
 		i++;
 	}
-	return (0);
+	if (ch == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
 }
+/*
+int	main()
+{
+	const char *str = "Hi, Arselaaa!";
+	char *result = ft_strchr(str, 's');
+
+	if (result)
+		printf("Found: %s\n", result);
+	else
+		printf("Character not found!\n");
+
+	return (0);
+}*/

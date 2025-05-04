@@ -11,30 +11,22 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+//#include <stdio.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	srclen;
 	size_t	dstlen;
+	size_t	end;
 	size_t	i;
 
 	dstlen = ft_strlen(dst);
 	srclen = ft_strlen(src);
-
 	if (size <= dstlen)
 		return (size + srclen);
 	i = 0;
-	while (src[i] && (dstlen + i < size - 1))
+	end = size - 1;
+	while (src[i] && (dstlen + i < end))
 	{
 		dst[dstlen + i] = src[i];
 		i++;
@@ -42,4 +34,15 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[dstlen + i] = '\0';
 	return (dstlen + srclen);
 }
+/*
+int main()
+{
+	char dest[20] = "Hi";
+	const char *to_add = ", Arsela!";
+	size_t result = ft_strlcat(dest, to_add, sizeof(dest));
 
+	printf("After ft_strlcat: %s\n", dest);
+	printf("Returned length: %zu\n", result);
+
+	return (0);
+}*/
