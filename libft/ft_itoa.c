@@ -11,29 +11,9 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-void *ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-	size_t	i;
-	unsigned char	*temp;
-		
-	if(count == 0 || size == 0)
-		return (NULL);
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-		return (NULL);
-	i = 0;
-	temp = (unsigned char *) ptr;
-	while (i < (count * size))
-	{
-		temp[i] = 0;
-		i++;
-	}
-	return (ptr);
-}
-
-void	ft_rev(char *tab, int size)
+static void	ft_rev(char *tab, int size)
 {
 	int	i;
 	int	end;
@@ -51,7 +31,7 @@ void	ft_rev(char *tab, int size)
 	}
 }
 
-int	ft_numlen(int n)
+static int	ft_numlen(int n)
 {
 	int	i;
 
@@ -62,7 +42,7 @@ int	ft_numlen(int n)
 	{
 		n = -n;
 		i++;
-	}	
+	}
 	while (n != 0)
 	{
 		i++;
@@ -71,58 +51,67 @@ int	ft_numlen(int n)
 	return (i);
 }
 
+static char	*var(int *i, int *minus, long int *nb, int n)
+{
+	char	*converted;
+
+	*i = 0;
+	*minus = 0;
+	*nb = (long int)n;
+	converted = (char *)ft_calloc((ft_numlen(n) + 1), sizeof(char));
+	return (converted);
+}
+
+static int	handle_zero_and_negative(long int *nb, char *converted, int *minus)
+{
+	if (*nb == 0)
+	{
+		converted[0] = '0';
+		return (1);
+	}
+	if (*nb < 0)
+	{
+		*minus = 1;
+		*nb = -(*nb);
+	}
+	return (0);
+}
+
 char	*ft_itoa(int n)
 {
-	int		i;
-	int		minus;
+	int			i;
+	int			minus;
 	long int	nb;
 	char		*converted;
-	
-	i = 0;
-	minus = 0;
-	nb = (long int) n;
 
-	converted = (char *)ft_calloc((ft_numlen(n) + 1), sizeof(char));
+	converted = var(&i, &minus, &nb, n);
 	if (!converted)
 		return (NULL);
-	if (nb < 0)
+	if (handle_zero_and_negative(&nb, converted, &minus))
+		return (converted);
+	while (nb > 0)
 	{
-		minus = '-';
-		nb = -nb;
-		i++;
-	}
-	while (nb != 0)
-	{
-		converted[i] = (nb % 10) + '0';
+		converted[i++] = (nb % 10) + '0';
 		nb /= 10;
-		i++;
 	}
 	if (minus)
-	{
-		converted[i] = '-';
-		i++;
-	}
+		converted[i++] = '-';
 	ft_rev(converted, i);
-	return(converted);
+	return (converted);
 }
 /*
-int	main()
+int	main(void)
 {
-	int	num;
-	char	*value;
-	
-	num = -2147483648;
-	value = ft_itoa(num);
+	int	num = -2147483648;
+	char	*value = ft_itoa(num);
+
 	if (value != NULL)
 	{
 		printf("The number: %d\n", num);
-		printf("The number converted to ascii: %s\n", value);
+		printf("Converted to string: %s\n", value);
 		free(value);
 	}
 	else
-	{
 		printf("Memory allocation failed.\n");
-		free(value);
-	}
 	return (0);
 }*/
