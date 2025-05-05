@@ -27,29 +27,28 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 /*
-int main()
+int	main()
 {
 	char	buffer[] = "Arsela!";
 	int	i;
 
 	printf("Before: %s\n", buffer);
-
 	i = 0;
 	while (i < 9)
 	{
-		printf("buffer[%d] = %c [%d]\n", i, buffer[i], buffer[i]);
+		printf("buffer[%d] = %c (%d)\n", i, buffer[i], buffer[i]);
 		i++;
 	}
 	printf("\n");
-	
-	ft_bzero(buffer, 2); // Should set the first 2 characters to '\0'
-	printf("After:\n");
 
+	ft_bzero(buffer, 3);
+	printf("After:\n");
 	i = 0;
 	while (i < 9)
 	{
-		printf("buffer[%d] = %c [%d]\n", i, buffer[i], buffer[i]);
+		printf("buffer[%d] = %c (%d)\n", i, buffer[i], buffer[i]);
 		i++;
 	}
+	printf("\n");
 	return (0);
 }*/
