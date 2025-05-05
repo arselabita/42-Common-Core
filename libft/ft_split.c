@@ -57,9 +57,8 @@ static char	*word_copy(char const *s, int start, int end)
 	return (word);
 }
 
-static int	save_the_word(char **split, char const *s, int start, int i, int j)
+static int	save_the_word(char **split, int j)
 {
-	split[j] = word_copy(s, start, i);
 	if (!split[j])
 	{
 		while (j > 0)
@@ -71,6 +70,15 @@ static int	save_the_word(char **split, char const *s, int start, int i, int j)
 		return (0);
 	}
 	return (1);
+}
+
+static void	check(char const *s, char c, int *i, int *start)
+{
+	while (s[*i] && s[*i] == c)
+		(*i)++;
+	*start = *i;
+	while (s[*i] && s[*i] != c)
+		(*i)++;
 }
 
 char	**ft_split(char const *s, char c)
@@ -88,14 +96,11 @@ char	**ft_split(char const *s, char c)
 	start = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		start = i;
-		while (s[i] && s[i] != c)
-			i++;
+		check(s, c, &i, &start);
 		if (start < i)
 		{
-			if (!save_the_word(split, s, start, i, j))
+			split[j] = word_copy(s, start, i);
+			if (!save_the_word(split, j))
 				return (NULL);
 			j++;
 		}
@@ -103,8 +108,8 @@ char	**ft_split(char const *s, char c)
 	split[j] = NULL;
 	return (split);
 }
-/*
-int	main()
+
+/*int	main()
 {
 	char	str[] = "Returns NULL if the allocation fails.";
 	char	ch = 't';
