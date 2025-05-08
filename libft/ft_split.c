@@ -6,13 +6,12 @@
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:48:25 by abita             #+#    #+#             */
-/*   Updated: 2025/05/01 15:48:28 by abita            ###   ########.fr       */
+/*   Updated: 2025/05/05 19:31:44 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 //#include <stdio.h>
-//#include <stdlib.h>
 
 static int	word_count(char const *s, char c)
 {
@@ -61,7 +60,7 @@ static int	save_the_word(char **split, int j)
 {
 	if (!split[j])
 	{
-		while (j > 0)
+		while (j < 0)
 		{
 			j--;
 			free(split[j]);
@@ -108,20 +107,19 @@ char	**ft_split(char const *s, char c)
 	split[j] = NULL;
 	return (split);
 }
-
-/*int	main()
+/*
+int main()
 {
-	char	str[] = "Returns NULL if the allocation fails.";
-	char	ch = 't';
-	char	**split;
-	int	i;
+	char str[] = "Returns NULL if the allocation fails.";
+	char ch = 't';
+	char **split;
+	int i;
 
 	split = ft_split(str, ch);
-	
-	if (split != NULL)
+	if (split)
 	{
-		printf("The input: %s\n", str);         
-		printf("The delimiter: %c\n", ch);
+		printf("the string: %s\n", str);
+		printf("the delimiter: %c\n", ch);
 		i = 0;
 		while (split[i])
 		{
@@ -133,7 +131,7 @@ char	**ft_split(char const *s, char c)
 	}
 	else
 	{
-		printf("Memory allocation failed.\n");
+		printf("Memory allocation failed!\n");
 		free(split);
 	}
 	return (0);

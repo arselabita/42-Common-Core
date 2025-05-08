@@ -15,34 +15,32 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	srclen;
-	size_t	dstlen;
+	size_t	src_len;
+	size_t	dst_len;
 	size_t	end;
 	size_t	i;
 
-	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
-	if (size <= dstlen)
-		return (size + srclen);
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (size <= dst_len)
+		return (size + src_len);
 	i = 0;
 	end = size - 1;
-	while (src[i] && (dstlen + i < end))
+	while (src[i] && (dst_len + i < end))
 	{
-		dst[dstlen + i] = src[i];
+		dst[dst_len + i] = src[i];
 		i++;
 	}
-	dst[dstlen + i] = '\0';
-	return (dstlen + srclen);
+	dst[dst_len + i] = '\0';
+	return (dst_len + src_len);
 }
-/*
-int main()
+/*int	main()
 {
-	char dest[20] = "Hi";
-	const char *to_add = ", Arsela!";
-	size_t result = ft_strlcat(dest, to_add, sizeof(dest));
+	char	src[20] = "bita";
+	char	dest[20] = "arsela ";
+	size_t	result = ft_strlcat(dest, src, sizeof(dest));
 
-	printf("After ft_strlcat: %s\n", dest);
-	printf("Returned length: %zu\n", result);
-
-	return (0);
+	printf("the result: %s\n", dest);
+	printf("length: %zu\n", result);
+	return (0);	
 }*/

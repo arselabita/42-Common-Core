@@ -33,14 +33,14 @@ void	*ft_memchr(const void *s, int c, size_t n)
 /*
 int	main()
 {
-	int		index;
+	int	index;
 	char	str[] = "abita";
-	char	*value;
+	char *value;
 
 	printf("The input: %s\n", str);
 	value = ft_memchr(str, 't', ft_strlen(str));
 
-	if (value != NULL)
+	if (value)
 	{
 		printf("The char found: %s\n", value);
 		index = (int)(value - str);
@@ -48,6 +48,5 @@ int	main()
 	}
 	else
 		printf("The char is not found.\n");
-
 	return (0);
 }*/

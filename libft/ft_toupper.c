@@ -20,13 +20,16 @@ int	ft_toupper(int c)
 	return (c);
 }
 /*
-int main()
+int	main()
 {
-    printf("%c\n", ft_toupper('a'));
-    printf("%c\n", ft_toupper('z'));
-    printf("%c\n", ft_toupper('A'));
-    printf("%c\n", ft_toupper('Z'));
-    printf("%c\n", ft_toupper('1'));
-    printf("%c\n", ft_toupper('#'));
-    return (0);
+	int	i;
+	char	letters[20] = "arrsela1**23";
+
+	i = 0;
+	while (letters[i])
+	{
+		printf("%c", ft_toupper(letters[i]));
+		i++;
+	}
+	return (0);
 }*/

@@ -33,15 +33,15 @@ char	*ft_strrchr(const char *s, int c)
 	return ((char *)last_ch);
 }
 /*
-int	main()
+int main()
 {
-	const char *str = "This is 42 Vienna!";
-	char *value = ft_strrchr(str, '4');
+	const char	str[] = "Arsela Bita";
+	int ch = 'a';
+	char	*value = ft_strrchr(str, ch);
 
 	if (value)
-		printf("Last '4' found at: %s\n", value);
+		printf("the last character: %c -> found at: %s\n", ch, str);
 	else
-		printf("Character not found\n");
-
+		printf("Not found! :(\n");
 	return (0);
 }*/

@@ -28,9 +28,9 @@ static void	ft_strcpy(char *dest, const char *src)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int			s1_len;
-	int			s2_len;
-	char		*new_str;
+	int		s1_len;
+	int		s2_len;
+	char	*new_str;
 
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
@@ -54,7 +54,6 @@ int	main()
 		printf("the 1st string: %s\n", str1);
 		printf("the 2nd string: %s\n", str2);
 		printf("the concatenated string: %s\n", new_str);
-		
 		free(new_str);
 	}
 	else

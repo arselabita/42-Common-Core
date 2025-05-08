@@ -31,15 +31,14 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 /*
-int	main()
+int main()
 {
-	const char *str = "Hi, Arselaaa!";
+	char str[] = "hi, arselaaa!";
 	char *result = ft_strchr(str, 's');
 
 	if (result)
-		printf("Found: %s\n", result);
+		printf("found: %s\n", result);
 	else
-		printf("Character not found!\n");
-
+		printf("not found :(\n");
 	return (0);
 }*/

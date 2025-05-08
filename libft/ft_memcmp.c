@@ -31,13 +31,12 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 /*
-int main()
+int	main()
 {
-	char s1[] = "abcdef";
-	char s2[] = "abcxef";
+	char	s1[] = "arseLaaaa";
+	char	s2[] = "arsejaaaa";
 
-	printf("ft_memcmp:%d\n", ft_memcmp(s1, s2, 3));
-	printf("ft_memcmp:%d\n", ft_memcmp(s1, s2, 5));
-	printf("ft_memcmp:%d\n", ft_memcmp(s1, s2, 0));
+	printf("ft_memcmp: %d\n", ft_memcmp(s1, s2, 3));
+	printf("ft_memcmp: %d\n", ft_memcmp(s1, s2, 5));
 	return (0);
 }*/

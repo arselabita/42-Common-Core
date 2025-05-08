@@ -6,7 +6,7 @@
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 09:17:52 by abita             #+#    #+#             */
-/*   Updated: 2025/04/24 09:17:54 by abita            ###   ########.fr       */
+/*   Updated: 2025/05/05 19:29:00 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,11 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 /*
-int main()
+int	main()
 {
-	char	buffer[] = "Hello, World!";
-	int	i;
-	
+	char buffer[] = "hello, world!";
+
 	ft_memmove(buffer + 7, buffer, 6);
-	printf("Result after memmove: %s\n", buffer);
-
-	i = 0;
-	while (i < 20)
-	{
-		if (buffer[i])
-			printf("\\0");
-		else
-			printf("%c", buffer[i]);
-		i++;
-	}
-	printf("\n");
-
+	printf("After: %s\n", buffer);
 	return (0);
 }*/

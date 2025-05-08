@@ -22,12 +22,9 @@ int	ft_tolower(int c)
 /*
 int	main()
 {
-	int 	i;
-	char	letter;
-	char	letters[20] = "ARSE';LA";
+	int	i;
+	char	letters[20] = "ARSEL1**23";
 
-	ft_tolower('A');
-	
 	i = 0;
 	while (letters[i])
 	{

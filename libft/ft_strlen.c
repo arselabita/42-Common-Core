@@ -23,9 +23,9 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 /*
-int main()
+int	main()
 {
-    const char *str = "Hi, Im Arsela!";
-    printf("Length of \"%s\": %zu\n", str, ft_strlen(str));
-    return 0;
+	const char str[] = "yellow";
+	printf("length is: %zu\n", ft_strlen(str));
+	return (0);
 }*/

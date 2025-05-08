@@ -33,7 +33,7 @@ char	*ft_strdup(const char *s1)
 /*
 int	main()
 {
-	const char	*str = "hellowww";
+	const char	*str = "helloww";
 	char	*duplicate;
 
 	duplicate = ft_strdup(str);

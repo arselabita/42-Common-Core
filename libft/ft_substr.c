@@ -24,15 +24,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	length_of_s = ft_strlen(s);
 	if (start > length_of_s)
-		return (NULL);
-	if ((start + len) > length_of_s)
-		len = length_of_s - start;
+		len = 0;
 	sub = (char *)malloc((len + 1) * sizeof(char));
 	if (!sub)
 		return (NULL);
 	i = start;
 	j = 0;
-	while (s[i] && j < len)
+	while (j < len && s[i])
 	{
 		sub[j] = s[i];
 		i++;

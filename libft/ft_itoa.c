@@ -6,7 +6,7 @@
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:03:57 by abita             #+#    #+#             */
-/*   Updated: 2025/04/30 13:04:08 by abita            ###   ########.fr       */
+/*   Updated: 2025/05/05 19:26:29 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,12 @@ char	*ft_itoa(int n)
 	return (converted);
 }
 /*
-int	main(void)
+int	main()
 {
 	int	num = -2147483648;
-	char	*value = ft_itoa(num);
+	char *value = ft_itoa(num);
 
-	if (value != NULL)
+	if (value)
 	{
 		printf("The number: %d\n", num);
 		printf("Converted to string: %s\n", value);

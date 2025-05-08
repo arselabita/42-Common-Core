@@ -38,13 +38,12 @@ int	main()
 {
 	const char big[] = "Your very first library.";
 	const char little[] = "library";
-	char *result;
+	char	*result;
 
-	result = ft_strnstr(big, little, 30);
+	result = ft_strnstr(big, little, 23);
 	if (result)
-		printf("Found: %s\n", result);
+		printf("found: %s\n", result);
 	else
-		printf("Not found\n");
-
+		printf("not found!! :(\n");
 	return (0);
 }*/

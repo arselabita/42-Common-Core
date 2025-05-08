@@ -40,19 +40,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (str);
 }
 /*
-int	main()
+int main()
 {
 	char	str[] = "ter array must end with a NULL pointer";
 	char	rem_chr[] = "ter";
 	char	*trimed_str;
 
 	trimed_str = ft_strtrim(str, rem_chr);
-	if (trimed_str != NULL)
+	if (trimed_str)
 	{
-		printf("The string: \n%s\n", str);
-		printf("\n");
-		printf("Trimed string excluding %s: \n%s\n", rem_chr, trimed_str);
-
+		printf("the string: %s\n", str);
+		printf("the char to remove: %s\n", rem_chr);
+		printf("trimed string: %s\n", trimed_str);
 		free(trimed_str);
 	}
 	else

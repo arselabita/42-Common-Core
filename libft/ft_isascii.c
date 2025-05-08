@@ -22,10 +22,9 @@ int	ft_isascii(int c)
 /*
 int main()
 {
-    // Testing ASCII values within and outside the range
     printf("%d\n", ft_isascii(65));
     printf("%d\n", ft_isascii(127));
     printf("%d\n", ft_isascii(128));
-    printf("%d\n", ft_isascii(-1));
+    printf("%d\n", ft_isascii(-65));
     return (0);
 }*/

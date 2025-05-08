@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
+	if (!d || !s)
+		return (d);
 	i = 0;
 	while (i < n)
 	{
@@ -30,15 +32,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 /*
-int main()
+int	main()
 {
 	char src[] = "Hello, World!";
 	char dest[20];
 
 	ft_memcpy(dest, src, 13);
 	dest[13] = '\0';
-
-	printf("Copied string: %s\n", dest);
-
+	printf("The copied string: %s\n", dest);
 	return (0);
 }*/

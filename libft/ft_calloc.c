@@ -15,7 +15,7 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void		*ptr;
+	void	*ptr;
 
 	if (count && size && count > SIZE_MAX / size)
 		return (NULL);
@@ -28,24 +28,20 @@ void	*ft_calloc(size_t count, size_t size)
 /*
 int main()
 {
-    int	n;
+    int n;
     int i;
     int *ptr;
 
     n = 5;
-    ptr = (int *)ft_calloc(n, sizeof(int));
-    printf("%p\n", ptr);
-
-    if (ptr != NULL)
-        printf("Memory successfully allocated!!\n");
-
+    ptr = (int  *)ft_calloc(n, sizeof(int));
+    if (ptr)
+        printf("Memory successfully allocated!\n");
     i = 0;
     while (i < n)
     {
         printf("%d ", ptr[i]);
         i++;
     }
-
     free(ptr);
     return (0);
 }*/

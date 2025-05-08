@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 10:36:57 by abita             #+#    #+#             */
-/*   Updated: 2025/04/23 10:36:59 by abita            ###   ########.fr       */
+/*   Created: 2025/05/06 12:31:20 by abita             #+#    #+#             */
+/*   Updated: 2025/05/06 12:31:26 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+#include <stdio.h>
 
-int	ft_isalnum(int c)
+// Function to create a new node
+t_list *ft_lstnew(void *content)
 {
-	if ((c >= 'A' && c <= 'Z' ) || (c >= 'a' && c <= 'z') || \
-		(c >= '0' && c <= '9'))
-		return (1);
-	return (0);
-}
-/*
+    struct s_list* newNode = (struct s_list*)malloc(sizeof(struct s_list));
+    if (!newNode)
+    {
+        printf("Memory allocation failed.\n");
+        return (NULL);
+    }
+    newNode->content = content;
+    newNode->next = NULL;
+    return (newNode);
+}  
+
+
 int main()
 {
-    printf("%d\n", ft_isalnum('A'));
-    printf("%d\n", ft_isalnum('z'));
-    printf("%d\n", ft_isalnum('5'));
-    printf("%d\n", ft_isalnum(' '));
-    printf("%d\n", ft_isalnum('&'));
+    struct s_list*  head = NULL;
+
+    ft_lstnew(&head);
+    printf("The new node is: ");
     return (0);
-}*/
+}
