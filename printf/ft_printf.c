@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdarg.h>
 
-int printf(const char* format, ...)
+int ft_printf(const char* format, ...)
 {
     va_list args;
     char    buffer[20];
