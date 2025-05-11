@@ -17,7 +17,6 @@ int ft_printf(const char* format, ...)
 {
     va_list args;
     char    buffer[20];
-    int     size;
     int     i;
     int     j;
 
@@ -26,10 +25,15 @@ int ft_printf(const char* format, ...)
     //ketu iteroj ne te gjithe format stringun qe do te shfaqet ne console
     i = 0;
     j = 0;
-    while (format[i] && i < size - 1)
+    while (format[i] && i < ft_strlen(format) - 1)
     {
         //kusht nese ne hasim nje % 
         if (ft_strchr(format, '%'))
+            if (format == 'd')
+            {
+                int next_arg = va_arg(args, int);
+            }
+            va_end(args);
             i++;
         // duhet te vendos cdo element ne output format.
         buffer[j++] = format[i++];
