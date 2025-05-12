@@ -63,14 +63,14 @@ static void ft_putnbr_u(unsigned int nb)
     write(1, &print, 1);
 }
 
-static void ft_hexasecimal(unsigned int nb)
+static void ft_hexasecimal(unsigned long nb)
 {
     char    *base;
     char    buffer[20];
     int     i;
 
     base = "0123456789abcdef";
-    if (nb == '0')
+    if (nb == 0)
     {
         write(1, "0", 1);
         return;
@@ -82,7 +82,8 @@ static void ft_hexasecimal(unsigned int nb)
         buffer[i++] = base[nb % 16];
         nb /= 16;
     }
-    // i printoj shifrat nga fundi ne fillim 
+    // i printoj shifrat nga fundi ne fillim
+    i--;
     while (i >= 0)
     {
         ft_putchar(buffer[i]);
@@ -90,14 +91,14 @@ static void ft_hexasecimal(unsigned int nb)
     }
 }
 
-static void ft_hexasecimal_upper(unsigned int nb)
+static void ft_hexasecimal_upper(unsigned long nb)
 {
     char    *base;
     char    buffer[20];
     int     i;
 
     base = "0123456789ABCDEF";
-    if (nb == '0')
+    if (nb == 0)
     {
         write(1, "0", 1);
         return;
@@ -110,6 +111,7 @@ static void ft_hexasecimal_upper(unsigned int nb)
         nb /= 16;
     }
     // i printoj shifrat nga fundi ne fillim 
+    i--;
     while (i >= 0)
     {
         ft_putchar(buffer[i]);
@@ -132,24 +134,29 @@ static int format_specifiers (char *format, int i, va_list args)
     else if (format[i] == 'p')
     {
         ft_putstr("0x");
-        ft_hexasecimal(va_arg(args, unsigned long long));
+        ft_hexasecimal(va_arg(args, unsigned long));
     }
+    // konverto ne unsigned int
     else if (format[i] == 'u')
     {
         ft_putnbr_u(va_arg(args, unsigned int));
     }
+    // konverto ne hex base sys lowercase
     else if (format[i] == 'x')
     {
-        ft_hexasecimal(va_arg(args, unsigned int));
+        ft_hexasecimal(va_arg(args, unsigned long));
     }
+    // konverto ne hex base sys uppercase
     else if (format[i] == 'X')
     {
-        ft_hexasecimal_upper(va_arg(args, unsigned int));
+        ft_hexasecimal_upper(va_arg(args, unsigned long));
     }
+    // printo % sign
     else if (format[i] == '%')
         ft_putchar('%');
     return (1);
 }
+
 int ft_printf(const char *format, ...)
 {
     va_list args;
@@ -168,6 +175,7 @@ int ft_printf(const char *format, ...)
             // therras funksionin per te format specifiers
             format_specifiers((char *)format, i, args);
         }
+        // ne te kunder thjesht printo str ne console
         else
             ft_putchar(format[i]);
         i++;
