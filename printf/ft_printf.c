@@ -13,6 +13,11 @@
 #include "libft.h"
 #include <stdarg.h>
 
+static void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 int ft_printf(const char* format, ...)
 {
     va_list args;
@@ -31,11 +36,13 @@ int ft_printf(const char* format, ...)
     {
         //kusht nese ne hasim nje % 
         if (format[i] == '%')
+            // konverto ne decimal ose int
             if (format[i] == 'd' || format[i] == 'i')
                 next_arg = ft_itoa(va_arg(args, int));
+            // konverto ne char
             else if (format[i] == 'c')
             {
-
+                
             }
             else if (format[i] == 's')
             {
@@ -57,14 +64,21 @@ int ft_printf(const char* format, ...)
             {
 
             }
+            else if (format[i] == '%')
+            {
+                
+            }
             else
-            
+            {
+                ft_p(next_arg);
+            }
             va_end(args);
             i++;
         // duhet te vendos cdo element ne output format.
         buffer[j++] = format[i++];
     }
     buffer[j] = '\0';
+    write(1, buffer, ft_strlen(buffer));
     return (next_arg);
 }
 int main()
