@@ -18,6 +18,7 @@ static void ft_putchar(char c)
 {
     write(1, &c, 1);
 }
+
 static void	ft_putstr(char *str)
 {
 	int	i;
@@ -46,7 +47,34 @@ static void ft_putnbr(int nb)
     print = (n % 10) + '0';
     write(1, &print, 1);
 }
-
+static int format_specifiers (char *format, int i, va_list args)
+{
+    // konverto ne decimal ose int
+    if (format[i] == 'd' || format[i] == 'i')
+        ft_putnbr(va_arg(args, int));
+    // konverto ne char
+    else if (format[i] == 'c')
+        ft_putchar(va_arg(args, int));
+    // konverto ne string
+    else if (format[i] == 's')
+        ft_putstr(va_arg(args, int));
+    // konverto ne pointer
+    else if (format[i] == 'p')
+    {
+    }
+    else if (format[i] == 'u')
+    {
+    }
+    else if (format[i] == 'x')
+    {
+    }
+    else if (format[i] == 'X')
+    {
+    }
+    else if (format[i] == '%')
+        ft_putchar('%');
+    return (1);
+}
 int ft_printf(const char *format, ...)
 {
     va_list args;
@@ -62,34 +90,7 @@ int ft_printf(const char *format, ...)
         if (format[i] == '%')
         {
             i++;
-            // konverto ne decimal ose int
-            if (format[i] == 'd' || format[i] == 'i')
-                ft_putnbr(va_arg(args, int));
-            // konverto ne char
-            else if (format[i] == 'c')
-                ft_putchar(va_arg(args, int));
-            // konverto ne string
-            else if (format[i] == 's')
-                ft_putstr(va_arg(args, int));
-            // konverto ne pointer
-            else if (format[i] == 'p')
-            {
-
-            }
-            else if (format[i] == 'u')
-            {
-
-            }
-            else if (format[i] == 'x')
-            {
-
-            }
-            else if (format[i] == 'X')
-            {
-                
-            }
-            else if (format[i] == '%')
-                ft_putchar('%');
+            format_specifiers((char *)format, i, args);
         }
         else
             ft_putchar(format[i]);
