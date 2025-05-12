@@ -51,7 +51,7 @@ static void ft_putnbr(int nb)
 static void ft_hexasecimal_lower(unsigned int nb)
 {
     char    *base;
-    char    *buffer;
+    char    buffer[20];
     int     i;
 
     base = "0123456789abcdef";
@@ -67,7 +67,7 @@ static void ft_hexasecimal_lower(unsigned int nb)
     // i printoj shifrat nga fundi ne fillim 
     while (i >= 0)
     {
-        write(1, &buffer[i], 1);
+        ft_putchar(buffer[i]);
         i--;
     }
 }
@@ -75,7 +75,7 @@ static void ft_hexasecimal_lower(unsigned int nb)
 static void ft_hexasecimal_upper(unsigned int nb)
 {
     char    *base;
-    char    *buffer;
+    char    buffer[20];
     int     i;
 
     base = "0123456789ABCDEF";
@@ -91,13 +91,14 @@ static void ft_hexasecimal_upper(unsigned int nb)
     // i printoj shifrat nga fundi ne fillim 
     while (i >= 0)
     {
-        write(1, &buffer[i], 1);
+        ft_putchar(buffer[i]);
         i--;
     }
 }
         
 static int format_specifiers (char *format, int i, va_list args)
 {
+    unsigned int ptr;
     // konverto ne decimal ose int
     if (format[i] == 'd' || format[i] == 'i')
         ft_putnbr(va_arg(args, int));
@@ -110,8 +111,9 @@ static int format_specifiers (char *format, int i, va_list args)
     // konverto ne pointer print adresen
     else if (format[i] == 'p')
     {
-        ft_putstr("Ox");
-        ft_hexasecimal_lower(va_arg(args, unsigned long long));
+        ptr = va_arg(args, unsigned long);
+        ft_putstr("0x");
+        ft_hexasecimal_lower(va_arg(args, unsigned long));
     }
     /*else if (format[i] == 'u')
     {
@@ -158,24 +160,24 @@ int ft_printf(const char *format, ...)
 int main()
 {
     int num;
-    int *ptr;
-    int ptr = &num;
-    
+
     num = 21;
     // per te printuar numer base 10 d dhe i
-    ft_printf("im a number %d and me too %i\n", num, num);
+    ft_printf("d dhe i: im a number %d and me too %i\n", num, num);
     // per te printuar nje karakter
-    ft_printf("my first letter is: %c\n", 'A');
+    ft_printf("c: my first letter is: %c\n", 'A');
     // per te printuar nje string
-    ft_printf("my name is: %s\n", "Arsela");
+    ft_printf("s: my name is: %s\n", "Arsela");
     // per te printuar adresen e diff ptr
-    ft_printf("%p\n", (void *)&ptr);
+    ft_printf("p: %p\n", (void *)&num);
+    //real printf
+    printf("real p: %p\n", &num);    
     // per te printuar hexadec num lowercase
-    ft_printf("%x\n", 255);
+    ft_printf("x: %x\n", 255);
     // per te printuar hexadec num uppercase
-    ft_printf("%X\n", 255);
+    ft_printf("X: %X\n", 255);
     // per te printuar %
-    ft_printf("%%\n");
+    ft_printf("%%: %%\n");
 
 
     //test 
