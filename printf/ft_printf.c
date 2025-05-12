@@ -195,46 +195,49 @@ int ft_printf(const char *format, ...)
 int main()
 {
     char str[] = "arsela";
+    int num;
     int i;
 
+    num = 21;
     i = ft_printf("mine: %s\n", str);
     printf("mine: %d\n", i);
     i = printf("theirs: %s\n", str);
     printf("theirs: %d\n", i);
+    printf("\n");
 
-    // // per te printuar numer base 10 d dhe i
-    // ft_printf("d dhe i: im a number %d and me too %i\n", num, num);
-    // printf("real d dhe i: im a number %d and me too %i\n", num, num);
-    // printf("\n");
-    // // per te printuar nje karakter
-    // ft_printf("c: my first letter is: %c\n", 'A');
-    // printf("real c: my first letter is: %c\n", 'A');
-    // printf("\n");
-    // // per te printuar nje string
-    // ft_printf("s: my name is: %s\n", "Arsela");
-    // printf("reals: my name is: %s\n", "Arsela");
-    // printf("\n");
-    // // per te printuar adresen e diff ptr
-    // ft_printf("p: %p\n", &num);
-    // printf("real p: %p\n", &num);
-    // printf("\n");
-    // // per te printuar positive num unsif=gned int-s
-    // num = 194967295;
-    // ft_printf("u: %u\n", num);
-    // printf("real u: %u\n", num);
-    // printf("\n"); 
-    // // per te printuar hexadec num lowercase
-    // ft_printf("x: %x\n", 255);
-    // printf("real x: %x\n", 255);
-    // printf("\n");
-    // // per te printuar hexadec num uppercase
-    // ft_printf("X: %X\n", 255);
-    // printf("real X: %X\n", 255);
-    // printf("\n");
-    // // per te printuar %
-    // ft_printf("%%: %%\n");
-    // printf("real %%: %%\n");
-    // printf("\n");
+    // per te printuar numer base 10 d dhe i
+    ft_printf("d dhe i: im a number %d and me too %i\n", num, num);
+    printf("real d dhe i: im a number %d and me too %i\n", num, num);
+    printf("\n");
+    // per te printuar nje karakter
+    ft_printf("c: my first letter is: %c\n", 'A');
+    printf("real c: my first letter is: %c\n", 'A');
+    printf("\n");
+    // per te printuar nje string
+    ft_printf("s: my name is: %s\n", "Arsela");
+    printf("reals: my name is: %s\n", "Arsela");
+    printf("\n");
+    // per te printuar adresen e diff ptr
+    ft_printf("p: %p\n", &num);
+    printf("real p: %p\n", &num);
+    printf("\n");
+    // per te printuar positive num unsif=gned int-s
+    num = 194967295;
+    ft_printf("u: %u\n", num);
+    printf("real u: %u\n", num);
+    printf("\n"); 
+    // per te printuar hexadec num lowercase
+    ft_printf("x: %x\n", 255);
+    printf("real x: %x\n", 255);
+    printf("\n");
+    // per te printuar hexadec num uppercase
+    ft_printf("X: %X\n", 255);
+    printf("real X: %X\n", 255);
+    printf("\n");
+    // per te printuar %
+    ft_printf("%%: %%\n");
+    printf("real %%: %%\n");
+    printf("\n");
 
     return (0);
 }
