@@ -57,9 +57,9 @@ static int format_specifiers (char *format, int i, va_list args)
         ft_putchar(va_arg(args, int));
     // konverto ne string
     else if (format[i] == 's')
-        ft_putstr(va_arg(args, int));
+        ft_putstr(va_arg(args, char *));
     // konverto ne pointer
-    else if (format[i] == 'p')
+   /* else if (format[i] == 'p')
     {
     }
     else if (format[i] == 'u')
@@ -70,7 +70,7 @@ static int format_specifiers (char *format, int i, va_list args)
     }
     else if (format[i] == 'X')
     {
-    }
+    }*/
     else if (format[i] == '%')
         ft_putchar('%');
     return (1);
@@ -84,12 +84,13 @@ int ft_printf(const char *format, ...)
 
     i = 0;
     // ketu iteroj ne te gjithe format stringun qe do te shfaqet ne console
-    while (format[i] && i < ft_strlen(format) - 1)
+    while (format[i])
     {
         // kusht nese ne hasim nje %
         if (format[i] == '%')
         {
             i++;
+            // therras funksionin per format specifiers
             format_specifiers((char *)format, i, args);
         }
         else
@@ -102,6 +103,6 @@ int ft_printf(const char *format, ...)
 
 int main()
 {
-    ft_printf("Hi, I'm %s", "Arsela");
+    ft_printf("Hi, I'm %s, im %d yo, my bday is on %i august, surname %c.\n", "Arsela", 21, 14, 'B');
     return (0);
 }
