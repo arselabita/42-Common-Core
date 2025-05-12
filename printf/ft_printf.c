@@ -17,17 +17,31 @@ static void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
+static void	ft_putnbr(int nb)
+{
+	char	    print;
+	long int	n;
+	
+	n = nb;
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	print = (n % 10) + '0';
+	write(1, &print, 1);
+}
 
 int ft_printf(const char* format, ...)
 {
     va_list args;
-    int next_arg;
-    char    buffer[20];
+    int     next_arg;
     int     i;
     int     j;
 
     va_start(args, format);
-
     //ketu iteroj ne te gjithe format stringun qe do te shfaqet ne console
     i = 0;
     j = 0;
@@ -36,49 +50,53 @@ int ft_printf(const char* format, ...)
     {
         //kusht nese ne hasim nje % 
         if (format[i] == '%')
+            i++;
             // konverto ne decimal ose int
-            if (format[i] == 'd' || format[i] == 'i')
-                next_arg = ft_itoa(va_arg(args, int));
+            if (format[i + 1] == 'd' || format[i + 1] == 'i')
+            {
+                next_arg = va_arg(args, int);
+                ft_putnbr(next_arg);
+            }
             // konverto ne char
-            else if (format[i] == 'c')
+            else if (format[i + 1] == 'c')
             {
-                
+                next_arg = va_arg(args, int);            
+                ft_putchar(next_arg);    
             }
-            else if (format[i] == 's')
+            // konverto ne string
+            else if (format[i + 1] == 's')
+            {
+                next_arg = va_arg(args, char *);            
+                ft_putchar(next_arg);
+            }
+            else if (format[i + 1] == 'p')
+            {
+                next_arg = va_arg(args, char *);            
+                ft_putchar(next_arg);
+            }
+            else if (format[i + 1] == 'u')
             {
 
             }
-            else if (format[i] == 'p')
+            else if (format[i + 1] == 'x')
             {
 
             }
-            else if (format[i] == 'u')
+            else if (format[i + 1] == 'X')
             {
 
             }
-            else if (format[i] == 'x')
+            else if (format[i + 1] == '%')
             {
 
-            }
-            else if (format[i] == 'X')
-            {
-
-            }
-            else if (format[i] == '%')
-            {
-                
             }
             else
             {
-                ft_p(next_arg);
+                ft_putchar(format[i]);
             }
             va_end(args);
             i++;
-        // duhet te vendos cdo element ne output format.
-        buffer[j++] = format[i++];
     }
-    buffer[j] = '\0';
-    write(1, buffer, ft_strlen(buffer));
     return (next_arg);
 }
 int main()
