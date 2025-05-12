@@ -77,7 +77,7 @@ int ft_printf(const char *format, ...)
     va_end(args);
     return (length);
 }
-
+/*
 int main()
 {
     char str[] = "arsela";
@@ -124,4 +124,4 @@ int main()
     printf("real %%: %%\n");
     printf("\n");
     return (0);
-}
+}*/
