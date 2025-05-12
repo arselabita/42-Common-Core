@@ -10,123 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdarg.h>
+#include "libftprintf.h"
 #include <stdio.h>
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int ft_putchar(char c)
-{
-    write(1, &c, 1);
-    return (1);
-}
-
-int	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		write(1, &str[i++], 1);
-    return (i);
-}
-
-int ft_putnbr(int nb)
-{
-    long int length;
-    long int n;
-    
-    length = 0;
-    n = nb;
-    if (n < 0)
-    {
-        length += ft_putchar('-');
-        n = -n;
-    }
-    if (n >= 10)
-        length += ft_putnbr(n / 10);
-    length += ft_putchar((n % 10) + '0');
-    return (length);
-}
-
-int ft_putnbr_u(unsigned int nb)
-{
-    unsigned int    length;
-
-    length = 0;
-    if (nb == 0)
-        return (ft_putchar('0'));
-    if (nb >= 10)
-        length += ft_putnbr_u(nb / 10);
-    length += ft_putchar((nb % 10) + '0');
-    return (length);
-}
-
-int ft_hexasecimal(unsigned long nb)
-{
-    char    *base;
-    char    buffer[20];
-    int     i;
-    unsigned long length;
-
-    length = 0;
-    base = "0123456789abcdef";
-    if (nb == 0)
-        return ft_putchar('0');
-    i = 0;
-    // ndarja e nurit dhe e ruaj ate ne buffer 
-    while (nb > 0)
-    {
-        buffer[i++] = base[nb % 16];
-        nb /= 16;
-    }
-    // i printoj shifrat nga fundi ne fillim
-    i--;
-    while (i >= 0)
-    {
-        length += ft_putchar(buffer[i]);
-        i--;
-    }
-    return (length);
-}
-
-int ft_hexasecimal_upper(unsigned long nb)
-{
-    char    *base;
-    char    buffer[20];
-    int     i;
-    unsigned int    length;
-
-    length = 0;
-    base = "0123456789ABCDEF";
-    if (nb == 0)
-        return ft_putchar('0');
-    i = 0;
-    // ndarja e nurit dhe e ruaj ate ne buffer 
-    while (nb > 0)
-    {
-        buffer[i++] = base[nb % 16];
-        nb /= 16;
-    }
-    // i printoj shifrat nga fundi ne fillim 
-    i--;
-    while (i >= 0)
-    {
-        length += ft_putchar(buffer[i]);
-        i--;
-    }
-    return (length);
-}
-        
 static int format_specifiers (char *format, int i, va_list args)
 {
     int length;
@@ -204,7 +90,6 @@ int main()
     i = printf("theirs: %s\n", str);
     printf("theirs: %d\n", i);
     printf("\n");
-
     // per te printuar numer base 10 d dhe i
     ft_printf("d dhe i: im a number %d and me too %i\n", num, num);
     printf("real d dhe i: im a number %d and me too %i\n", num, num);
@@ -223,8 +108,8 @@ int main()
     printf("\n");
     // per te printuar positive num unsif=gned int-s
     num = 194967295;
-    ft_printf("u: %u\n", num);
-    printf("real u: %u\n", num);
+    ft_printf("u: %u\n", -42);
+    printf("real u: %u\n", -42);
     printf("\n"); 
     // per te printuar hexadec num lowercase
     ft_printf("x: %x\n", 255);
@@ -238,6 +123,5 @@ int main()
     ft_printf("%%: %%\n");
     printf("real %%: %%\n");
     printf("\n");
-
     return (0);
 }
