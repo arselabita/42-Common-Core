@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 20:54:40 by abita             #+#    #+#             */
-/*   Updated: 2025/05/13 14:25:26 by abita            ###   ########.fr       */
+/*   Created: 2025/04/23 17:05:36 by abita             #+#    #+#             */
+/*   Updated: 2025/04/23 17:05:39 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nb)
+void	ft_bzero(void *s, size_t n)
 {
-	long int	length;
-	long int	n;
+	size_t			i;
+	unsigned char	*ptr;
 
-	length = 0;
-	n = nb;
-	if (n < 0)
+	i = 0;
+	ptr = (unsigned char *)s;
+	while (i < n)
 	{
-		length += ft_putchar('-');
-		n = -n;
+		ptr[i] = 0;
+		i++;
 	}
-	if (n >= 10)
-		length += ft_putnbr(n / 10);
-	length += ft_putchar((n % 10) + '0');
-	return (length);
 }

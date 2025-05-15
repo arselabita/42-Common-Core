@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_hexadecimatl_upper.c                             :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 20:54:40 by abita             #+#    #+#             */
-/*   Updated: 2025/05/13 14:25:26 by abita            ###   ########.fr       */
+/*   Created: 2025/05/12 20:54:18 by abita             #+#    #+#             */
+/*   Updated: 2025/05/13 14:21:44 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nb)
+int	ft_hexadecimal_upper(unsigned long nb)
 {
-	long int	length;
-	long int	n;
+	char			*base;
+	char			*buffer;
+	int				i;
+	unsigned int	length;
 
 	length = 0;
-	n = nb;
-	if (n < 0)
+	base = "0123456789ABCDEF";
+	buffer = (char *)ft_calloc(17, sizeof(char));
+	if (!buffer)
+		return (-1);
+	if (nb == 0)
+		return (free(buffer), ft_putchar('0'));
+	i = 0;
+	while (nb > 0)
 	{
-		length += ft_putchar('-');
-		n = -n;
+		buffer[i++] = base[nb % 16];
+		nb /= 16;
 	}
-	if (n >= 10)
-		length += ft_putnbr(n / 10);
-	length += ft_putchar((n % 10) + '0');
-	return (length);
+	while (--i >= 0)
+		length += ft_putchar(buffer[i]);
+	return (free(buffer), length);
 }

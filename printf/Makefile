@@ -1,11 +1,23 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: abita <abita@student.42vienna.com>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/05/12 20:55:11 by abita             #+#    #+#              #
+#    Updated: 2025/05/12 20:55:13 by abita            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+#CFLAGS = -Wall -Werror -Wextra
 
 CFILES = \
 		ft_printf.c ft_putstr.c ft_putnbr.c \
-		ft_putnbr_u.c ft_putchar.c ft_hexasecimal.c\
-		ft_hexasecimal_upper.c
+		ft_putnbr_u.c ft_putchar.c ft_hexadecimal.c\
+		ft_hexadecimal_upper.c ft_calloc.c ft_bzero.c main.c
 
 OFILES = $(CFILES:.c=.o)
 
@@ -25,7 +37,7 @@ fclean: clean
 re: fclean all
 
 run: $(NAME)
-	$(CC) $(CFLAGS) ft_printf.c libftprintf.a -o ./run.out
+	$(CC) ft_printf.c libftprintf.a -o ./run.out
 	./run.out
 
 .PHONY: all clean fclean re

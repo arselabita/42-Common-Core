@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 20:54:40 by abita             #+#    #+#             */
-/*   Updated: 2025/05/13 14:25:26 by abita            ###   ########.fr       */
+/*   Created: 2025/04/29 10:52:56 by abita             #+#    #+#             */
+/*   Updated: 2025/04/29 10:53:03 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nb)
+void	*ft_calloc(size_t count, size_t size)
 {
-	long int	length;
-	long int	n;
+	void	*ptr;
 
-	length = 0;
-	n = nb;
-	if (n < 0)
-	{
-		length += ft_putchar('-');
-		n = -n;
-	}
-	if (n >= 10)
-		length += ft_putnbr(n / 10);
-	length += ft_putchar((n % 10) + '0');
-	return (length);
+	if (count && size && count > SIZE_MAX / size)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
