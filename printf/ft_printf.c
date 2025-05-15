@@ -13,10 +13,10 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-static int  function_p_helper(va_list args)
+static int	function_p_helper(va_list args)
 {
+	int				length;
 	unsigned long	address;
-	int length;
 
 	address = va_arg(args, unsigned long);
 	if ((void *)address == NULL)
@@ -26,16 +26,19 @@ static int  function_p_helper(va_list args)
 	length += (ft_hexadecimal((unsigned long)address));
 	return (length);
 }
-static int handle_s_helper(va_list args)
+
+static int	handle_s_helper(va_list args)
 {
 	char	*str;
+
 	str = va_arg(args, char *);
 	return (ft_putstr(str));
 }
+
 static int	format_specifiers(const char *format, int i, va_list args)
 {
 	if (format == NULL)
-		  return (-1);
+		return (-1);
 	if (format[i] == 'd' || format[i] == 'i')
 		return (ft_putnbr(va_arg(args, int)));
 	else if (format[i] == 'c')
@@ -53,7 +56,10 @@ static int	format_specifiers(const char *format, int i, va_list args)
 	else if (format[i] == '%')
 		return (ft_putchar(format[i]));
 	else
-		return (ft_putchar(format[i]), -1);
+	{
+		ft_putchar(format[i]);
+		return (-1);
+	}
 }
 
 int	ft_printf(const char *format, ...)
@@ -83,4 +89,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (length);
 }
-
