@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static int	function_p_helper(va_list args)
 {
@@ -37,8 +36,6 @@ static int	handle_s_helper(va_list args)
 
 static int	format_specifiers(const char *format, int i, va_list args)
 {
-	if (format == NULL)
-		return (-1);
 	if (format[i] == 'd' || format[i] == 'i')
 		return (ft_putnbr(va_arg(args, int)));
 	else if (format[i] == 'c')
@@ -73,7 +70,7 @@ int	ft_printf(const char *format, ...)
 	length = 0;
 	if (format == NULL)
 		return (-1);
-	while (format[i])
+	while (format[i] && i < INT_MAX - 2)
 	{
 		if (format[i] == '%' && format[i + 1])
 		{

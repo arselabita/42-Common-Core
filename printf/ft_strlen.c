@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 20:54:57 by abita             #+#    #+#             */
-/*   Updated: 2025/05/13 14:28:13 by abita            ###   ########.fr       */
+/*   Created: 2025/04/23 11:13:49 by abita             #+#    #+#             */
+/*   Updated: 2025/04/23 11:13:51 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
-	if (!str)
-		return (write(1, "(null)", 6));
-	i = ft_strlen(str);
-	write(1, str, i);
+	i = 0;
+	while (str[i])
+		i++;
 	return (i);
 }
