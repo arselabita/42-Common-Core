@@ -52,8 +52,9 @@ static int	format_specifiers(const char *format, int i, va_list args)
 		return (ft_hexadecimal_upper(va_arg(args, unsigned long)));
 	else if (format[i] == '%')
 		return (ft_putchar(format[i]));
-	else
+	else 
 	{
+		ft_putchar('%');
 		ft_putchar(format[i]);
 		return (-1);
 	}
