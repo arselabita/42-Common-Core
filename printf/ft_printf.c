@@ -15,14 +15,14 @@
 static int	function_p_helper(va_list args)
 {
 	int				length;
-	unsigned long	address;
+	void	*address;
 
-	address = va_arg(args, unsigned long);
-	if ((void *)address == NULL)
+	address = va_arg(args, void *);
+	if (address == NULL)
 		return (write(1, "(nil)", 5));
 	length = 0;
 	length += ft_putstr("0x");
-	length += (ft_hexadecimal((unsigned long)address));
+	length += (ft_hexadecimal_pointer((unsigned long long)address));
 	return (length);
 }
 
@@ -47,9 +47,9 @@ static int	format_specifiers(const char *format, int i, va_list args)
 	else if (format[i] == 'u')
 		return (ft_putnbr_u(va_arg(args, unsigned int)));
 	else if (format[i] == 'x')
-		return (ft_hexadecimal(va_arg(args, unsigned long)));
+		return (ft_hexadecimal(va_arg(args, unsigned int)));
 	else if (format[i] == 'X')
-		return (ft_hexadecimal_upper(va_arg(args, unsigned long)));
+		return (ft_hexadecimal_upper(va_arg(args, unsigned int)));
 	else if (format[i] == '%')
 		return (ft_putchar(format[i]));
 	else

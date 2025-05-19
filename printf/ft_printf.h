@@ -25,6 +25,7 @@ int		ft_putnbr_u(unsigned int nb);
 int		ft_putstr(char *str);
 int		ft_putchar(char c);
 int		ft_putnbr(int nb);
+int	    ft_hexadecimal_pointer(unsigned long long nb);
 size_t	ft_strlen(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
