@@ -40,6 +40,11 @@ char    *get_next_line(int fd)
     int buffer_len;
     int i;
 
+    if (fd == -1)
+    {
+        printf("\nError Opening FIle!!\n");
+        return (-1);
+    }
     buffer_len = ft_strlen(buffer);
     next_line = (char *)ft_calloc(buffer_len + 1, sizeof(char));
     if (!next_line)
@@ -63,17 +68,12 @@ int main()
     char    *result;
 
     fileName = "get_next_line.txt";
-    fileDescriptor = open(fileName, O_RDONLY); // Open the file
+    fileDescriptor = open(fileName, O_RDWR); // Open the file on read and write mode
     result = get_next_line(fileDescriptor);
-    if (fileDescriptor == -1)
-    {
-        printf("\nError Opening FIle!!\n");
-        excit(1);
-    }
-    else
-        printf("\nFile %s opened successfully!\n", fileName);
 
     close(fileDescriptor); // Close the file
+    printf("Connects of the file %s\n", fileName);
+    printf("Connects of the file %s\n", fileDescriptor);
     printf("Connects of the file %s\n", result);
     return (0);
 }
