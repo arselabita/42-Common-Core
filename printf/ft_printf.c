@@ -52,11 +52,11 @@ static int	format_specifiers(const char *format, int i, va_list args)
 		return (ft_hexadecimal_upper(va_arg(args, unsigned long)));
 	else if (format[i] == '%')
 		return (ft_putchar(format[i]));
-	else 
+	else
 	{
 		ft_putchar('%');
 		ft_putchar(format[i]);
-		return (-1);
+		return (2);
 	}
 }
 
@@ -66,17 +66,17 @@ int	ft_printf(const char *format, ...)
 	int		length;
 	int		i;
 
-	va_start(args, format);
 	i = 0;
 	length = 0;
 	if (format == NULL)
 		return (-1);
-	while (format[i] && i < INT_MAX - 2)
+	va_start(args, format);
+	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
-			length += format_specifiers((char *)format, i, args);
+			length += format_specifiers(format, i, args);
 		}
 		else if (format[i] == '%' && !format[i + 1])
 			return (-1);
