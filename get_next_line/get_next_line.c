@@ -10,27 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*This project is about programming a function that returns a line
-read from a file descriptor.
-
-File Descriptors are simply non-negative integers that act as handles
-for these files or resources. They serve as communication channel between the user-space
-applications and the kernel-space system calls for I/O operations.
-
-There is a limit to file descriptors, mainly two reasons:
-    1. Resource Managements: Too many open files can hog system resources
-    2. Security: To prevent any form of denial-of-service attacks.
-
-Basically unique identifiers that help the system manage your interactions
-with various things.
-
-If i want to read smth from a file named get_next_line.txt, the steps would be:access
-    1. Open the file: You get a File Descriptor lets say fd = 3
-    2. Read or Write: Use fd to read/write
-    3. Close: Finally close the file
-*/
-
 #include "get_next_line.h"
+
+char    *ft_next_line_helper(char *helper)
+{
+    int i;
+
+    i = 0;
+    while (helper[i] && helper[i] != '\n')
+        i++;
+    if (helper[i] == '\n')
+        i++;
+    
+    return (helper);
+}
 
 char    *get_next_line(int fd)
 {
@@ -45,14 +38,15 @@ char    *get_next_line(int fd)
     if (!buffer)
         return (NULL);
     bytesToRead = 1;
-    while (!ft_strchr(helper, '\n') && bytesToRead != 0) // if not \n and not empty
+    while (!ft_strchr(helper, '\n') && bytesToRead != 0) // vazhdon derisa të kemi një \n ose fundin e fileit
     {
-        bytesToRead = read(fd, nextLine, BUFFER_SIZE); // continue reading
+        bytesToRead = read(fd, buffer, BUFFER_SIZE); // continue reading
         if (bytesToRead == -1)
            return (free (buffer), NULL);
-        nextLine[bytesToRead] = '\0';
-        helper = ft_strjoin(helper, buffer);
+        buffer[bytesToRead] = '\0';
+        helper = ft_strjoin(helper, buffer); // bashkojmë leximin e ri me çfarë kemi mbledhur
     }
     free (buffer);
+    nextLine = ft_next_line_helper(helper);
     return (nextLine);
 }
