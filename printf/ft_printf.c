@@ -22,7 +22,7 @@ static int	function_p_helper(va_list args)
 		return (write(1, "(nil)", 5));
 	length = 0;
 	length += ft_putstr("0x");
-	length += (ft_hexadecimal_pointer((unsigned long long)address));
+	length += (ft_hexadecimal_pointer((uintptr_t)address));
 	return (length);
 }
 

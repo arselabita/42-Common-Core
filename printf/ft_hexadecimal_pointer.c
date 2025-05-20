@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-int	ft_hexadecimal_pointer(unsigned long long nb)
+int	ft_hexadecimal_pointer(uintptr_t nb)
 {
 	char			*base;
 	char			*buffer;
 	int				i;
-	unsigned long long	length;
+	uintptr_t		length;
 
 	length = 0;
 	base = "0123456789abcdef";

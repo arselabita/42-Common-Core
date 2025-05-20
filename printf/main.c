@@ -4,15 +4,6 @@
 
 int	main(void)
 {
-	int a;
-
-	a = 0;
-
-	a = ft_printf("invalid: %");
-	printf("%d", a);
-	// h = printf("invalid: %");
-	// printf("%d", h);
-
 	// tests for strings
 	printf("\n string tests:\n");
 	//
@@ -54,7 +45,7 @@ int	main(void)
 	//
 	printf("\nlength is: %d\n", ft_printf("test %x, Max %x, Min %x, after", 123, (unsigned int) 4294967295, 0 ));
 	printf("\nlength is: %d\n", printf("test %x, Max %x, Min %x, after", 123, (unsigned int) 4294967295, 0));
-	printf("\nlength is: %d\n", ft_printf("test %x, Max %x, Min %x, after", 123, (unsigned int) 4294967296, (unsigned int) -1 ));
+	printf("\nlength is: %d\n", ft_printf("test %x, Max %x, Min %x, after", 123, (unsigned int) 4294967296, -1 ));
 	printf("\nlength is: %d\n", printf("test %x, Max %x, Min %x, after", 123, (unsigned int) 4294967296, (unsigned int) -1));
 	printf("\nlength is: %d\n", ft_printf("test %x, Max %x, Min %x, after", 873, (unsigned int) 42949, (unsigned int) 9999 ));
 	printf("\nlength is: %d\n", printf("test %x, Max %x, Min %x, after", 873, (unsigned int) 42949, (unsigned int) 9999));
@@ -70,7 +61,7 @@ int	main(void)
 	printf("\n NULL tests:\n");
 	//
 	printf("\nlength is: %d\n", ft_printf(NULL));
-	printf("\nlength is: %d\n", printf(NULL));
+	// printf("\nlength is: %d\n", printf(NULL));
 	
 	// character checks
 	printf("\n character tests:\n");
@@ -90,7 +81,16 @@ int	main(void)
 	printf("\n invalid format specifiers\n");
 	//
 	printf("\nlength is: %d\n", ft_printf("test %, %%, another test %%, after", 12));
-	printf("\nlength is: %d\n", printf("test %c, %%, another test %%, after", 'A'));
-	printf("\nlength is: %d\n", ft_printf("%%%%%%%%%% "));
-	printf("\nlength is: %d\n", printf("%%%%%%%%%% "));
+	printf("\nlength is: %d\n", printf("test %, %%, another test %%, after", 12));
+	printf("\nlength is: %d\n", ft_printf("%%% %c"));
+	//printf("\nlength is: %d\n", printf("%%% %c")); // this works because format specifier is ' ' as space, WE DON'T NEED TO HANDLE THIS, IT IS BONUS!!!!!!!!
+	printf("\nlength is: %d\n", ft_printf("%d%i%c%s%x%X%p%u%%", INT_MIN, INT_MAX, 0, "", UINT_MAX, 0, (void *)-1, UINT_MAX));
+	printf("\nlength is: %d\n", printf("%d%i%c%s%x%X%p%u%%", INT_MIN, INT_MAX, 0, "", UINT_MAX, 0, (void *)-1, UINT_MAX));
+
+	ft_printf("pointer: %p\n", (void *)-1);
+	printf("pointer: %p\n", (void *)-1);
+
 }
+
+
+

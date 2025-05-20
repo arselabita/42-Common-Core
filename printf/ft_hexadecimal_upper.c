@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_hexadecimal_upper(unsigned long nb)
+int	ft_hexadecimal_upper(unsigned int nb)
 {
 	char			*base;
 	char			*buffer;

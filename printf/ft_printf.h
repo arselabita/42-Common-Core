@@ -19,13 +19,13 @@
 # include <limits.h>
 
 int		ft_printf(const char *format, ...);
-int		ft_hexadecimal_upper(unsigned long nb);
-int		ft_hexadecimal(unsigned long nb);
+int		ft_hexadecimal_upper(unsigned int nb);
+int		ft_hexadecimal(unsigned int nb);
 int		ft_putnbr_u(unsigned int nb);
 int		ft_putstr(char *str);
 int		ft_putchar(char c);
 int		ft_putnbr(int nb);
-int	    ft_hexadecimal_pointer(unsigned long long nb);
+int	    ft_hexadecimal_pointer(uintptr_t nb);
 size_t	ft_strlen(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
