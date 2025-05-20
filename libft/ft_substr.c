@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+#include <stdio.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -39,7 +39,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub[j] = '\0';
 	return (sub);
 }
-/*
+
 int	main()
 {
 	char	str[] = "The substring starts at index ’start’.";
@@ -55,4 +55,4 @@ int	main()
 	else
 		printf("Failed to allocate memory.\n");
 	return (0);
-}*/
+}

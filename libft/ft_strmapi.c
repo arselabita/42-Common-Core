@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+#include <stdio.h>
 
-/*static char	funct(unsigned int i, char ch)
+static char	funct(unsigned int i, char ch)
 {
 	if ((i % 2 == 0) && (ch >= 'a' && ch <= 'z'))
 		return (ch - 32);
@@ -21,7 +21,7 @@
 		return (ch + 32);
 	else
 		return (ch);
-}*/
+}
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -40,7 +40,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	new_str[i] = '\0';
 	return (new_str);
 }
-/*
+
 int	main()
 {
 	char	str[] = "Returns NULL if the allocation fails.";
@@ -59,4 +59,4 @@ int	main()
 		free(value);
 	}
 	return (0);
-}*/
+}
