@@ -31,49 +31,27 @@ If i want to read smth from a file named get_next_line.txt, the steps would be:a
 */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char    *get_next_line(int fd)
 {
-    static char buffer[290];
-    char    *next_line;
-    int buffer_len;
-    int i;
+    char            *nextLine;
+    char            *buffer;
+    static char     *helper;
+    int             bytesToRead;
 
-    if (fd == -1)
-    {
-        printf("\nError Opening FIle!!\n");
-        return (-1);
-    }
-    buffer_len = ft_strlen(buffer);
-    next_line = (char *)ft_calloc(buffer_len + 1, sizeof(char));
-    if (!next_line)
+    if (fd == -1 || BUFFER_SIZE <= 0)
         return (NULL);
-    read(fd, next_line, sizeof(next_line)); // Read 290 bytes
-    i = 0;
-    while (next_line[i])
+    buffer = (char *)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
+    if (!buffer)
+        return (NULL);
+    bytesToRead = 1;
+    while (!ft_strchr(helper, '\n') && bytesToRead != 0) // if not \n and not empty
     {
-        if (next_line[i] == '\n')
-        {
-
-        }
-        i++;
+        bytesToRead = read(fd, nextLine, BUFFER_SIZE); // continue reading
+        if (bytesToRead == -1)
+           return (free (buffer), NULL);
+        nextLine[bytesToRead] = '\0';
     }
-    return (free(next_line), next_line);
-}
-int main()
-{
-    int fileDescriptor;
-    char    *fileName;
-    char    *result;
-
-    fileName = "get_next_line.txt";
-    fileDescriptor = open(fileName, O_RDWR); // Open the file on read and write mode
-    result = get_next_line(fileDescriptor);
-
-    close(fileDescriptor); // Close the file
-    printf("Connects of the file %s\n", fileName);
-    printf("Connects of the file %s\n", fileDescriptor);
-    printf("Connects of the file %s\n", result);
-    return (0);
+    free (buffer);
+    return (nextLine);
 }

@@ -1,9 +1,9 @@
 CC = cc
 
-#CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 CFILES = \
-		get_next_line.c get_next_line_utils.c
+		get_next_line.c get_next_line_utils.c main.c
 
 OFILES = $(CFILES:.c=.o)
 

@@ -1,0 +1,4 @@
+Roses are red,\n
+Pointers are wild,\n
+Segfaults appear,\n
+When memory's defield.

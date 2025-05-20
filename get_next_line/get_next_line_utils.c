@@ -12,14 +12,22 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
+	char	ch;
+	int		i;
 
 	i = 0;
-	while (str[i])
+	ch = (char)c;
+	while (s[i])
+	{
+		if (s[i] == ch)
+			return ((char *)&s[i]);
 		i++;
-	return (i);
+	}
+	if (ch == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
 }
 
 void	*ft_calloc(size_t count, size_t size)
