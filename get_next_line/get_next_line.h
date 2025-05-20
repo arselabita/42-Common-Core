@@ -19,6 +19,8 @@
 
 char    *get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+void	ft_strcpy(char *dest, const char *src);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 size_t	ft_strlen(const char *str);

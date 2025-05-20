@@ -51,6 +51,7 @@ char    *get_next_line(int fd)
         if (bytesToRead == -1)
            return (free (buffer), NULL);
         nextLine[bytesToRead] = '\0';
+        helper = ft_strjoin(helper, buffer);
     }
     free (buffer);
     return (nextLine);
