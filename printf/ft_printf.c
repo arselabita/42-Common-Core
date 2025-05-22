@@ -14,8 +14,8 @@
 
 static int	function_p_helper(va_list args)
 {
-	int				length;
-	void	*address;
+	int			length;
+	void		*address;
 
 	address = va_arg(args, void *);
 	if (address == NULL)
@@ -71,19 +71,15 @@ int	ft_printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	while (format[i])
+	while (format[i] && i < INT_MAX - 2)
 	{
 		if (format[i] == '%' && format[i + 1])
-		{
-			i++;
-			length += format_specifiers(format, i, args);
-		}
+			length += format_specifiers(format, ++i, args);
 		else if (format[i] == '%' && !format[i + 1])
-			return (-1);
+			return (va_end(args), -1);
 		else
 			length += ft_putchar(format[i]);
 		i++;
 	}
-	va_end(args);
-	return (length);
+	return (va_end(args), length);
 }

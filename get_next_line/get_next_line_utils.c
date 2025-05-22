@@ -12,6 +12,21 @@
 
 #include "get_next_line.h"
 
+void	*ft_calloc(size_t count, size_t size)
+{
+	unsigned char	*ptr;
+	size_t	i;
+	if (count && size && count > SIZE_MAX / size)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < count * size)
+		ptr[i++] = 0;
+	return (ptr);
+}
+
 char	*ft_strchr(const char *s, int c)
 {
 	char	ch;
@@ -19,6 +34,8 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	ch = (char)c;
+    if (!s)
+		return (NULL);
 	while (s[i])
 	{
 		if (s[i] == ch)
@@ -30,32 +47,18 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+size_t	ft_strlen(const char *str)
 {
-	void	*ptr;
-
-	if (count && size && count > SIZE_MAX / size)
-		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t			i;
-	unsigned char	*ptr;
+	size_t	i;
 
 	i = 0;
-	ptr = (unsigned char *)s;
-	while (i < n)
-	{
-		ptr[i] = 0;
+	if (!str)
+		return (0);
+	while (str[i])
 		i++;
-	}
+	return (i);
 }
+
 void	ft_strcpy(char *dest, const char *src)
 {
 	size_t	i;
@@ -69,12 +72,16 @@ void	ft_strcpy(char *dest, const char *src)
 	dest[i] = '\0';
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		s1_len;
 	int		s2_len;
 	char	*new_str;
 
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	new_str = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
@@ -84,4 +91,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strcpy(new_str + s1_len, s2);
 	return (new_str);
 }
-

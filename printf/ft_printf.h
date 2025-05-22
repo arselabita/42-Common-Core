@@ -6,7 +6,7 @@
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 20:55:05 by abita             #+#    #+#             */
-/*   Updated: 2025/05/13 20:23:33 by abita            ###   ########.fr       */
+/*   Updated: 2025/05/19 19:20:09 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_putnbr_u(unsigned int nb);
 int		ft_putstr(char *str);
 int		ft_putchar(char c);
 int		ft_putnbr(int nb);
-int	    ft_hexadecimal_pointer(uintptr_t nb);
+int		ft_hexadecimal_pointer(uintptr_t nb);
 size_t	ft_strlen(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);

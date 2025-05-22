@@ -1,0 +1,9 @@
+# Ignore VS Code settings folder
+.vscode/
+
+# Ignore output binary
+run.out
+
+# # Ignore main source file
+# main.c
+

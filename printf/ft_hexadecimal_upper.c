@@ -14,10 +14,10 @@
 
 int	ft_hexadecimal_upper(unsigned int nb)
 {
-	char			*base;
-	char			*buffer;
-	int				i;
-	unsigned int	length;
+	char	*base;
+	char	*buffer;
+	int		i;
+	int		length;
 
 	length = 0;
 	base = "0123456789ABCDEF";
@@ -25,7 +25,10 @@ int	ft_hexadecimal_upper(unsigned int nb)
 	if (!buffer)
 		return (-1);
 	if (nb == 0)
-		return (free(buffer), ft_putchar('0'));
+	{
+		free(buffer);
+		return (ft_putchar('0'));
+	}
 	i = 0;
 	while (nb > 0)
 	{
@@ -34,5 +37,6 @@ int	ft_hexadecimal_upper(unsigned int nb)
 	}
 	while (--i >= 0)
 		length += ft_putchar(buffer[i]);
-	return (free(buffer), length);
+	free(buffer);
+	return (length);
 }

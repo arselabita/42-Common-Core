@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 19:12:48 by abita             #+#    #+#             */
-/*   Updated: 2025/05/19 19:12:52 by abita            ###   ########.fr       */
+/*   Created: 2025/05/19 19:12:31 by abita             #+#    #+#             */
+/*   Updated: 2025/05/19 19:18:22 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_hexadecimal_pointer(uintptr_t nb)
 {
-	char			*base;
-	char			*buffer;
-	int				i;
-	uintptr_t		length;
+	char	*base;
+	char	*buffer;
+	int		i;
+	int		length;
 
 	length = 0;
 	base = "0123456789abcdef";
@@ -25,7 +25,10 @@ int	ft_hexadecimal_pointer(uintptr_t nb)
 	if (!buffer)
 		return (-1);
 	if (nb == 0)
-		return (free(buffer), ft_putchar('0'));
+	{
+		free(buffer);
+		return (ft_putchar('0'));
+	}
 	i = 0;
 	while (nb > 0)
 	{
@@ -34,5 +37,6 @@ int	ft_hexadecimal_pointer(uintptr_t nb)
 	}
 	while (--i >= 0)
 		length += ft_putchar(buffer[i]);
-	return (free(buffer), length);
+	free(buffer);
+	return (length);
 }

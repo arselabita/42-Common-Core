@@ -12,12 +12,12 @@
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 
 CFILES = \
 		ft_printf.c ft_putstr.c ft_putnbr.c \
 		ft_putnbr_u.c ft_putchar.c ft_hexadecimal.c ft_hexadecimal_pointer.c \
-		ft_hexadecimal_upper.c ft_calloc.c ft_bzero.c ft_strlen.c main.c
+		ft_hexadecimal_upper.c ft_calloc.c ft_bzero.c ft_strlen.c
 
 OFILES = $(CFILES:.c=.o)
 
@@ -37,7 +37,7 @@ fclean: clean
 re: fclean all
 
 run: $(NAME)
-	$(CC) -fsanitize=address ft_printf.c libftprintf.a -o ./run.out
+	$(CC) ft_printf.c libftprintf.a -o ./run.out
 	./run.out
 
 .PHONY: all clean fclean re
