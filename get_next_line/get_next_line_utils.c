@@ -15,7 +15,8 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*ptr;
-	size_t	i;
+	size_t			i;
+
 	if (count && size && count > SIZE_MAX / size)
 		return (NULL);
 	ptr = malloc(count * size);
@@ -34,7 +35,7 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	ch = (char)c;
-    if (!s)
+	if (!s)
 		return (NULL);
 	while (s[i])
 	{
@@ -84,7 +85,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		s2 = "";
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	new_str = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
+	new_str = (char *)ft_calloc((s1_len + s2_len + 1), sizeof(char));
 	if (!new_str)
 		return (NULL);
 	ft_strcpy(new_str, s1);
