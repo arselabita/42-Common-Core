@@ -6,7 +6,7 @@
 /*   By: abita <abita@student.42vienna.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 14:36:04 by abita             #+#    #+#             */
-/*   Updated: 2025/05/17 14:36:05 by abita            ###   ########.fr       */
+/*   Updated: 2025/05/26 20:05:11 by abita            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*ft_calloc(size_t count, size_t size)
 char	*ft_strchr(const char *s, int c)
 {
 	char	ch;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	ch = (char)c;
@@ -75,9 +75,9 @@ void	ft_strcpy(char *dest, const char *src)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int		s1_len;
-	int		s2_len;
-	char	*new_str;
+	size_t		s1_len;
+	size_t		s2_len;
+	char		*new_str;
 
 	if (!s1)
 		s1 = "";
@@ -92,3 +92,4 @@ char	*ft_strjoin(char *s1, char *s2)
 	ft_strcpy(new_str + s1_len, s2);
 	return (new_str);
 }
+
